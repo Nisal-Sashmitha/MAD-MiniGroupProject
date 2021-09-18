@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Private Tutor Planner</string>
+
+    <!--Assignment Strings-->
+    <string name="assign_title">Assignments</string>
+    <string name="new_Asign">New Assignment</string>
+    <string name="ex_Asign">Existing Assignment</string>
+    <string name="up_Asign">Update  Assignment</string>
+    <string name="Assign_name">Assignment Name</string>
+    <string name="assign_add_title">Title</string>
+    <string name="assign_mod_name">Module Name</string>
+    <string name="Qs">Questions</string>
+    <string name="mark">Marks</string>
+    <string name="assign_date">Date</string>
+    <string name="assign_title_name">Photosynthesis</string>
+    <string name="assign_btnDone">Done</string>
+    <string name="assign_btnUp">Update</string>
+    <string name="title_activity_exist_assign">exist_Assign</string>
 </resources>
