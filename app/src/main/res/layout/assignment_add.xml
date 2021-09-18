@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/add_upmod"
+    tools:context=".Assignment_add">
+
+    <ImageView
+        android:id="@+id/assign_iV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06"
+        app:srcCompat="@drawable/mod_hat" />
+
+    <TextView
+        android:id="@+id/assign_tv1_"
+        android:layout_width="202dp"
+        android:layout_height="42dp"
+        android:hint="@string/assign_title"
+        android:text="@string/assign_title"
+        android:textColor="@color/white"
+        android:textColorHint="@color/purple_500"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="@+id/assign_iV1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <TextView
+        android:id="@+id/assign_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_Asign"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207" />
+
+
+    <TextView
+        android:id="@+id/assign_tv3"
+        android:layout_width="44dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="276dp"
+        android:layout_marginRight="276dp"
+        android:text="@string/assign_add_title"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv2" />
+
+    <TextView
+        android:id="@+id/assign_tv4"
+        android:layout_width="173dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/assign_mod_name"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_etTitle" />
+
+    <TextView
+        android:id="@+id/assign_tv5"
+        android:layout_width="108dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="404dp"
+        android:text="@string/mark"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toEndOf="@+id/assign_tv6"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/assign_tv6"
+        android:layout_width="114dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:text="@string/Qs"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/assign_tv5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/assign_tv7"
+        android:layout_width="57dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginRight="148dp"
+        android:text="@string/assign_date"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv6" />
+
+    <EditText
+        android:id="@+id/assign_etTitle"
+        android:layout_width="204dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/assign_in_bg"
+        android:ems="10"
+        android:hint="@string/assign_add_title"
+        android:inputType="textPersonName"
+        android:paddingLeft="30dp"
+        android:shadowColor="@android:color/darker_gray"
+        android:textColorHint="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv3" />
+
+    <EditText
+        android:id="@+id/assign_etModName"
+        android:layout_width="204dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/assign_in_bg"
+        android:ems="10"
+        android:hint="@string/assign_mod_name"
+        android:inputType="textPersonName"
+        android:paddingLeft="30dp"
+        android:textColorHint="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="@+id/assign_tv4"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv4" />
+
+    <EditText
+        android:id="@+id/assign_etMark"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/assign_in_bg"
+        android:ems="10"
+        android:hint="60%"
+        android:inputType="number"
+        android:paddingLeft="30dp"
+        android:textColorHint="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/assign_etQ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/assign_etQ" />
+
+    <EditText
+        android:id="@+id/assign_etQ"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/assign_in_bg"
+        android:ems="10"
+        android:hint="10"
+        android:inputType="number"
+        android:paddingLeft="30dp"
+        android:textColorHint="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/assign_etMark"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv6" />
+
+    <EditText
+        android:id="@+id/assign_Date"
+        android:layout_width="145dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/assign_in_bg"
+        android:ems="10"
+        android:hint="12/02/2021"
+        android:inputType="date"
+        android:paddingLeft="30dp"
+        android:textColorHint="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv7" />
+
+    <Button
+        android:id="@+id/assign_btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/assign_in_btn"
+        android:text="@string/assign_btnDone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assign_Date"
+
+        app:layout_constraintVertical_bias="0.336" />
+
+    <ImageView
+        android:id="@+id/assign_iv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/ic_assign_baseline_menu_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
