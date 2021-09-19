@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/student_background"
+    tools:context=".StudentStudentSearch">
+
+    <TextView
+    android:id="@+id/studnt_main_title1"
+    android:layout_width="140dp"
+    android:layout_height="45dp"
+    android:layout_marginStart="96dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="20dp"
+    android:text="@string/student_main_title"
+    android:textColor="@color/white"
+    android:textSize="30sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/imageView4"  />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/graduate" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@color/student_my_purple_with_full_opacity"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/student_ic_baseline_menu_24" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/student_upperbackground"
+        android:rotationX="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studnt_main_title1">
+
+
+        <TextView
+            android:id="@+id/displaystudentTitile"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/student_students_search_title"
+            android:textColor="@color/my_purple"
+            android:textSize="@dimen/student_activity_titile_text_size"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toTopOf="@+id/planets_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.464"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <android.widget.Button
+            android:id="@+id/student_addNewbtn_In_search"
+            android:layout_width="33dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/student_ic_baseline_post_add_24"
+            android:backgroundTint="@color/my_purple"
+            android:onClick="navToAddNewStudent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+
+            android:id="@+id/planets_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/student_form_input_height"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints="@string/student_form_hint_select_class"
+            android:background="@drawable/student_input_bg"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/planets_spinner"
+            app:layout_constraintEnd_toEndOf="@+id/planets_spinner"
+            app:layout_constraintTop_toTopOf="@+id/planets_spinner"
+            app:layout_constraintVertical_bias="0.521"
+            app:srcCompat="@drawable/student_drop_down_arrow" />
+
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/student_form_input_height"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/student_input_bg"
+            android:drawableRight="@drawable/student_ic_baseline_search_24"
+            android:drawableTint="@color/my_purple"
+            android:ems="10"
+            android:hint="@string/student_studentssearch_Search_students_hint"
+            android:inputType="textPersonName"
+            android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+            android:paddingTop="10dp"
+            android:paddingRight="@dimen/student_form_input_padding_right"
+            android:paddingBottom="10dp"
+            android:textColor="@color/purple_500"
+            android:textColorHint="@android:color/darker_gray"
+
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/student_search_results_recycler_view"
+            android:layout_width="387dp"
+            android:layout_height="437dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

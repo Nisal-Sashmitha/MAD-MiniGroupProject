@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Private Tutor Planner</string>
+
+
+    <!--*************************student strings***********************-->
+    <string name="student_main_title">Student</string>
+    <string name="student_form_lable_name">Name</string>
+    <string name="student_form_lable_date">Date</string>
+    <string name="student_form_lable_class">Classes</string>
+    <string name="student_form_lable_Contact_no">Contact Number</string>
+    <string name="student_form_lable_address">Address</string>
+    <string name="student_add_form_add_btn_value">Add</string>
+    <string name="student_addnewstudentform_title">New Student</string>
+    <string name="student_form_age_hint">age</string>
+    <string name="student_form_hint_select_class">select class</string>
+    <string name="student_form_ontact_no_hint">enter number</string>
+    <string name="student_form_address_hint">enter address</string>
+    <string name="student_students_search_title">Find Student</string>
+    <string name="student_studentssearch_Search_students_hint">Search students...</string>
+    <string-array name="student_classes_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>

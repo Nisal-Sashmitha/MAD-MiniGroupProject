@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="form_lable_text_Size">18sp</dimen>
+    <dimen name="student_form_input_height">47dp</dimen>
+    <dimen name="student_activity_titile_text_size">20sp</dimen>
+    <dimen name="student_form_input_inner_padding_left">20dp</dimen>
+    <dimen name="student_form_input_padding_right">20dp</dimen>
+    <dimen name="student_search_item_inner_padding_top_bottom" >5dp</dimen>
+    <dimen name="student_normal_text_size">18sp</dimen>
+
+
+</resources>
