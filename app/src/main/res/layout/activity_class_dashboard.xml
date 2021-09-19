@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/class_madd_background"
+    tools:context=".ClassDashboard">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/class_madd_backgrounda_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/class_ic_menubar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constaint_layout_middle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/class_top_round_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Classes">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_schedule_class"
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="16dp"
+                android:gravity="start"
+                android:text="@string/class_tv_Schedule"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="0.063"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/class_ic_schedule_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_class_addNewClass"
+            android:layout_width="101dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="165dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:onClick="navigateClassAdd"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_add"
+            app:iconGravity="textStart"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_friday" />
+
+        <Button
+            android:id="@+id/btn_Monday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/purple_500"
+            android:gravity="fill|end"
+            android:text="@string/class_btn_Monday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_tuesday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <Button
+            android:id="@+id/btn_Wednesday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/purple_500"
+            android:gravity="fill|end"
+            android:text="@string/class_btn_wednesday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_thursday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_tuesday" />
+
+        <Button
+            android:id="@+id/btn_friday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/purple_500"
+            android:gravity="fill|end"
+            android:text="@string/class_btn_friday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_class_addNewClass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_thursday" />
+
+        <Button
+            android:id="@+id/btn_tuesday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/class_dark_orchid"
+            android:gravity="fill|end"
+            android:text="@string/class_btn_tuesday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_Wednesday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Monday" />
+
+        <Button
+            android:id="@+id/btn_thursday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/class_dark_orchid"
+            android:gravity="fill|end"
+            android:text="@string/class_btn_thursday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_friday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Wednesday" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_Classes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/class_tv__header_Classes"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constaint_layout_middle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
+
+    <ImageView
+        android:id="@+id/mainAppIcon"
+        android:layout_width="73dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_Classes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:srcCompat="@drawable/class_main_app_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

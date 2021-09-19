@@ -19,4 +19,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void classNav(View view){
+        Intent intent = new Intent(this,ClassDashboard.class);
+        startActivity(intent);
+    }
 }

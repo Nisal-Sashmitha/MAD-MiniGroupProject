@@ -16,4 +16,34 @@
     <string name="assign_btnDone">Done</string>
     <string name="assign_btnUp">Update</string>
     <string name="title_activity_exist_assign">exist_Assign</string>
+
+    <!--Class Strings-->
+    <string name="class_btn_Monday">Monday</string>
+    <string name="class_btn_wednesday">Wednesday</string>
+    <string name="class_btn_friday">Friday</string>
+    <string name="class_btn_tuesday">Tuesday</string>
+    <string name="class_btn_thursday">Thursday</string>
+    <string name="class_tv__header_Classes">Classess</string>
+    <string name="class_tv_Schedule">Schedule</string>
+    <string name="class_tv_header_newClass">New Class</string>
+    <string name="class_tv_label_day">Day</string>
+    <string name="class_tv_label_time">Time</string>
+    <string name="class_et_select_time">Select time</string>
+    <string name="class_hint_enter_fee">Enter fee</string>
+    <string name="class_tv_label_monthlyfee">Monthly Fee</string>
+    <string name="class_hint_enterClassName">Enter class name</string>
+    <string name="class_btn_add">Add</string>
+    <string name="class_tv_label_class">Class</string>
+    <string name="class_main_nav_Class">Class</string>
+    <string-array name="class_arryDays">
+        <item>Select day</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
 </resources>

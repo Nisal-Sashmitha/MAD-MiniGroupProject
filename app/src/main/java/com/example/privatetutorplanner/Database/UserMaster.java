@@ -5,7 +5,7 @@ import android.provider.BaseColumns;
 public class UserMaster {
     private UserMaster(){}
 
-<<<<<<< HEAD
+
     public static class Assignment implements BaseColumns{
         public static final String TABLE_NAME="Assignment";
         public static final String COLUMN_NAME_ASSIGNID="ID";
@@ -17,7 +17,7 @@ public class UserMaster {
 
     }
 
-=======
+
     public static class Student implements BaseColumns{
         public static final String TABLE_NAME="Student";
         public static final String COLUMN_NAME_STUDENTID="studentID";
@@ -36,5 +36,15 @@ public class UserMaster {
         public static final String COLUMN_NAME_LAST_PAYMENT_AMMOUNT ="lastPaymentAmmount";
 
     }
->>>>>>> 5c51bdb97c62a504dc0ba68c954234d81f991ecb
+
+    public static class Class implements BaseColumns {
+
+        public static final String TABLE_NAME = "Class";
+        public static final String COLUMN_NAME_CLASSID = "classID";
+        public static final String COLUMN_NAME_NAME = "name";
+        public static final String COLUMN_NAME_DAY = "day";
+        public static final String COLUMN_NAME_TIME = "time";
+        public static final String COLUMN_NAME_MONTHLY_FEE = "monthlyFee";
+    }
+
 }
