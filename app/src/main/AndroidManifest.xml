@@ -12,6 +12,9 @@
         <activity android:name=".StudentStudentSearch" />
         <activity android:name=".studentPannel" />
         <activity android:name=".StudentAddnewstudentActivity" />
+        <activity android:name=".ClassAdd"></activity>
+        <activity android:name=".ClassDashboard" />
+        <activity android:name=".Assignment_add" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

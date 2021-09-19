@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+
 
 public class MainActivity extends AppCompatActivity {
     Button addStudetnavbtn;
@@ -20,12 +19,18 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent();
 
     }
+
+    public void assignNav(View v){
+        Intent intent = new Intent(this, Assignment_add.class);
+        startActivity(intent);
+
+    }
+    public void classNav(View view){
+        Intent intent = new Intent(this,ClassDashboard.class);
+        startActivity(intent);
+    }
     public void navToAddNewStudent(View v){
-        addStudetnavbtn = findViewById(R.id.studentNav);
-
-
         Intent i= new Intent(this,StudentStudentSearch.class);
-        //i.putExtra("ABC","nisal");
         startActivity(i);
     }
 

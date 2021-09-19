@@ -13,4 +13,16 @@
     <color name="my_purple">#FF673AB7</color>
     <color name="student_my_purple_with_full_opacity">#22673AB7</color>
     <color name="student_my_blue">#FF3F51B5</color>
+
+
+    <!--Assignment Colors-->
+    <color name="assign_purple_shade">#673ab7</color>
+    <color name="assign_main_purple">#9c27b0</color>
+    <color name="assign_blue">#3f51b5</color>
+    <color name="assign_gradient">#5e41b8</color>
+
+    <!--Class colors-->
+    <color name="class_purple_with_opacity">#EE673AB7</color>
+    <color name="class_blue_with_opacity">#EE3F51B5</color>
+    <color name="class_dark_orchid">#9C27B0</color>
 </resources>
