@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PrivateTutorPlanner">
-        <activity android:name=".StudentEditStudentForm"></activity>
+        <activity android:name=".ClassEdit"></activity>
+        <activity android:name=".ClassIndividual" />
+        <activity android:name=".ClassBasedDays" />
+        <activity android:name=".StudentEditStudentForm" />
         <activity android:name=".StudentDisplayStudent" />
         <activity android:name=".StudentStudentSearch" />
         <activity android:name=".studentPannel" />

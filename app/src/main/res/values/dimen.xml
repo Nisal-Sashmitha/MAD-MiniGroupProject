@@ -19,6 +19,10 @@
     <dimen name="class_btn_round_corners">15dp</dimen>
     <dimen name="class_add_icon_size">40dp</dimen>
     <dimen name="class_text_size_inside_layout">18sp</dimen>
+    <dimen name="class_recycle_view_padding_top">8dp</dimen>
+    <dimen name="class_cardView_margin_top">12dp</dimen>
+    <dimen name="class_recycle_card_corner_radius">25dp</dimen>
+    <item name="class_alphaValue_noData" type="dimen" format="float">0.2</item>
 
 
 

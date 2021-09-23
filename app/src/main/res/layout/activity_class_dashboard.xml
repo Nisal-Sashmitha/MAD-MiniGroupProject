@@ -21,11 +21,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/class_ic_menubar" />
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constaint_layout_middle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/class_top_round_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +40,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_Monday"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -78,7 +81,6 @@
             android:layout_height="54dp"
             android:layout_marginStart="165dp"
             android:layout_marginEnd="152dp"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/purple_500"
             android:onClick="navigateClassAdd"
             app:cornerRadius="@dimen/class_btn_round_corners"
@@ -89,16 +91,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_friday" />
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_sunday"
+            app:layout_constraintVertical_bias="0.97" />
 
         <Button
-            android:id="@+id/btn_Monday"
+            android:id="@+id/class_btn_Monday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/purple_500"
             android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
             android:text="@string/class_btn_Monday"
             android:textAllCaps="false"
             android:textSize="@dimen/class_text_size_inside_layout"
@@ -107,20 +111,21 @@
             app:icon="@drawable/class_ic_keyboard_arrow"
             app:iconGravity="end"
             app:iconSize="@dimen/class_add_icon_size"
-            app:layout_constraintBottom_toTopOf="@+id/btn_tuesday"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_tuesday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <Button
-            android:id="@+id/btn_Wednesday"
+            android:id="@+id/class_btn_Wednesday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/purple_500"
             android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
             android:text="@string/class_btn_wednesday"
             android:textAllCaps="false"
             android:textSize="@dimen/class_text_size_inside_layout"
@@ -129,21 +134,45 @@
             app:icon="@drawable/class_ic_keyboard_arrow"
             app:iconGravity="end"
             app:iconSize="@dimen/class_add_icon_size"
-            app:layout_constraintBottom_toTopOf="@+id/btn_thursday"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_thursday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_tuesday" />
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_tuesday" />
 
         <Button
-            android:id="@+id/btn_friday"
+            android:id="@+id/class_btn_friday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/purple_500"
             android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
             android:text="@string/class_btn_friday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_saturday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_thursday" />
+
+        <Button
+            android:id="@+id/class_btn_sunday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/purple_500"
+            android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
+            android:text="@string/class_btn_sunday"
             android:textAllCaps="false"
             android:textSize="@dimen/class_text_size_inside_layout"
             android:textStyle="normal|bold"
@@ -155,16 +184,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_thursday" />
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_saturday" />
 
         <Button
-            android:id="@+id/btn_tuesday"
+            android:id="@+id/class_btn_saturday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/class_dark_orchid"
             android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
+            android:text="@string/class_btn_saturday"
+            android:textAllCaps="false"
+            android:textSize="@dimen/class_text_size_inside_layout"
+            android:textStyle="normal|bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:icon="@drawable/class_ic_keyboard_arrow"
+            app:iconGravity="end"
+            app:iconSize="@dimen/class_add_icon_size"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_sunday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_friday" />
+
+        <Button
+            android:id="@+id/class_btn_tuesday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/class_dark_orchid"
+            android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
             android:text="@string/class_btn_tuesday"
             android:textAllCaps="false"
             android:textSize="@dimen/class_text_size_inside_layout"
@@ -173,20 +226,21 @@
             app:icon="@drawable/class_ic_keyboard_arrow"
             app:iconGravity="end"
             app:iconSize="@dimen/class_add_icon_size"
-            app:layout_constraintBottom_toTopOf="@+id/btn_Wednesday"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_Wednesday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_Monday" />
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_Monday" />
 
         <Button
-            android:id="@+id/btn_thursday"
+            android:id="@+id/class_btn_thursday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/class_dark_orchid"
             android:gravity="fill|end"
+            android:onClick="navigateClassBasedDays"
             android:text="@string/class_btn_thursday"
             android:textAllCaps="false"
             android:textSize="@dimen/class_text_size_inside_layout"
@@ -195,11 +249,12 @@
             app:icon="@drawable/class_ic_keyboard_arrow"
             app:iconGravity="end"
             app:iconSize="@dimen/class_add_icon_size"
-            app:layout_constraintBottom_toTopOf="@+id/btn_friday"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_friday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_Wednesday" />
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_Wednesday" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
