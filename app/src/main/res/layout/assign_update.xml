@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/add_upmod"
-    tools:context=".Assignment_add">
+    tools:context=".assign_update">
 
     <ImageView
         android:id="@+id/assign_iV1"
@@ -40,7 +40,7 @@
         android:id="@+id/assign_tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_Asign"
+        android:text="@string/up_Asign"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -215,7 +215,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/assign_in_btn"
-        android:text="@string/assign_btnDone"
+        android:text="@string/assign_btnUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"

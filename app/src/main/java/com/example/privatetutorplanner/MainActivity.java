@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void assignNav(View v){
-        Intent intent = new Intent(this, Assignment_add.class);
+        Intent intent = new Intent(this, assignment_ret.class);
         startActivity(intent);
 
     }
