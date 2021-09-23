@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/student_background"
+    tools:context=".StudentAddnewstudentActivity">
+
+    <TextView
+        android:id="@+id/studnt_main_title1"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/student_main_title"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/student_upperbackground"
+        android:rotationX="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studnt_main_title1">
+
+
+        <LinearLayout
+            android:layout_width="417dp"
+            android:layout_height="602dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/displaystudentTitile"
+                android:layout_width="142dp"
+                android:layout_height="29dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="26dp"
+                android:text="@string/student_addnewstudentform_title"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/student_activity_titile_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.142" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/student_form_lable_name"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/student_addstd_Name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/student_addstd_Name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/student_input_bg"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingTop="10dp"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:paddingBottom="10dp"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@+id/student_AddNewStudentNavbutton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.163" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="202dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/student_form_lable_Contact_no"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/student_addstd_ContactNo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_addstd_Date"
+                app:layout_constraintVertical_bias="0.069" />
+
+            <EditText
+                android:id="@+id/student_addstd_ContactNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/student_input_bg"
+                android:ems="10"
+                android:hint="@string/student_form_ontact_no_hint"
+                android:inputType="phone"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="242dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/student_form_lable_date"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_addstd_Name" />
+
+            <EditText
+                android:id="@+id/student_addstd_Date"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/student_input_bg"
+                android:ems="10"
+                android:hint="yyyy-mm-dd"
+                android:inputType="date"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.563"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/student_form_lable_address"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/student_addstd_Address"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_addstd_ContactNo"
+                app:layout_constraintVertical_bias="0.533" />
+
+            <EditText
+                android:id="@+id/student_addstd_Address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/student_input_bg"
+                android:ems="10"
+                android:hint="@string/student_form_address_hint"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_addstd_ContactNo" />
+
+            <android.widget.Button
+                android:id="@+id/student_AddNewStudentNavbutton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="90dp"
+                android:background="@drawable/student_submit_btn_bg"
+                android:onClick="navTopaymentNoteStudentForm"
+                android:text="@string/student_add_form_add_btn_value"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_addstd_Address" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/graduate" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@color/student_my_purple_with_full_opacity"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/student_ic_baseline_menu_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

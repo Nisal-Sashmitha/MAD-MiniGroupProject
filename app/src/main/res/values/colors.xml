@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <!--*************************student Colors***********************-->
+    <color name="my_purple">#FF673AB7</color>
+    <color name="student_my_purple_with_full_opacity">#22673AB7</color>
+    <color name="student_my_blue">#FF3F51B5</color>
+
+
     <!--Assignment Colors-->
     <color name="assign_purple_shade">#673ab7</color>
     <color name="assign_main_purple">#9c27b0</color>

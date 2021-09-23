@@ -28,14 +28,18 @@ public class UserMaster {
 
 
     }
-    public static class LastPaymentTable implements BaseColumns{
-        public static final String TABLE_NAME="lastPayment";
-        public static final String COLUMN_NAME_STUDENTID="studentID";
-        public static final String COLUMN_NAME_CLASSID="classID";
-        public static final String COLUMN_NAME_LAST_PAYMENT_MONTH ="lastPaymentMonth";
-        public static final String COLUMN_NAME_LAST_PAYMENT_AMMOUNT ="lastPaymentAmmount";
+
+    public static class StudentClass implements BaseColumns{
+        public static final String TABLE_NAME="StudentClass";
+        public static final String COLUMN_NAME_STUDENTID="StudentID";
+        public static final String COLUMN_NAME_CLASSID="ClassID";
+        public static final String COLUMN_NAME_LAST_PAYMENT_MONTH="lastPaymentMonth";
+        public static final String COLUMN_NAME_LAST_PAYMENT_AMOUNT="lastPaymentAmount";
+
 
     }
+
+
 
     public static class Class implements BaseColumns {
 

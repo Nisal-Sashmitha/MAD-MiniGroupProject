@@ -14,6 +14,12 @@
         <activity android:name=".asssignment_ret_adapt1" />
         <activity android:name=".assignment_ret" />
         <activity android:name=".ClassAdd" />
+        <activity android:name=".StudentEditStudentForm"></activity>
+        <activity android:name=".StudentDisplayStudent" />
+        <activity android:name=".StudentStudentSearch" />
+        <activity android:name=".studentPannel" />
+        <activity android:name=".StudentAddnewstudentActivity" />
+        <activity android:name=".ClassAdd" />
         <activity android:name=".ClassDashboard" />
         <activity android:name=".Assignment_add" />
         <activity android:name=".MainActivity">

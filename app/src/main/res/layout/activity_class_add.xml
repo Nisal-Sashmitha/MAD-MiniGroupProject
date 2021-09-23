@@ -104,6 +104,7 @@
                 android:hint="@string/class_et_select_time"
                 android:inputType="time"
                 android:padding="10dp"
+                android:textColor="@color/my_purple"
                 app:layout_constraintBottom_toTopOf="@+id/tv_label_monthlyfee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,6 +120,7 @@
                 android:hint="@string/class_hint_enter_fee"
                 android:inputType="numberDecimal"
                 android:padding="10dp"
+                android:textColor="@color/my_purple"
                 app:layout_constraintBottom_toTopOf="@+id/class_btn_new_class_add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -166,8 +168,10 @@
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:singleLine="false"
+                android:textColor="@color/my_purple"
                 app:layout_constraintBottom_toTopOf="@+id/tv_label_day"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_label_class" />
 

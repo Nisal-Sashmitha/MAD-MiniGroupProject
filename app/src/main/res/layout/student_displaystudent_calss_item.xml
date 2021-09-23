@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/student_search_item_inner_padding_top_bottom"
+    android:layout_marginBottom="@dimen/student_search_item_inner_padding_top_bottom"
+    android:background="@drawable/student_items_lists_backgrund"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="@dimen/student_search_item_inner_padding_top_bottom"
+        android:background="@drawable/student_items_lists_backgrund"
+        android:paddingTop="@dimen/student_class_item_pading_top"
+        android:paddingBottom="@dimen/student_search_item_inner_padding_top_bottom">
+
+
+        <TextView
+            android:id="@+id/student_display_classes_className"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="Grade 9 science"
+            android:textColor="@color/white"
+            android:textSize="@dimen/student_normal_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/student_display_classes_editButton"
+            style="@style/student_Theme.icons"
+            android:layout_width="31dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/student_edit_white_background"
+            app:icon="@drawable/student_ic_baseline_edit_24_white"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/student_display_classes_delete_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/student_display_classes_delete_btn"
+            style="@style/student_Theme.icons"
+            android:layout_width="30dp"
+
+            android:layout_height="27dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/student_ic_baseline_delete_24"
+            app:icon="@drawable/student_ic_baseline_delete_24"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/student_display_classes_payemnent_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Completed Payment: may(Rs1000)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/student_small_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student_display_classes_className"
+            tools:layout_editor_absoluteX="32dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

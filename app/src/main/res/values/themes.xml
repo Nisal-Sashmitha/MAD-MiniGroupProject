@@ -22,4 +22,17 @@
     <style name="Theme.PrivateTutorPlanner.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PrivateTutorPlanner.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="student_Theme.icons" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:minWidth">10dp</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:background">@drawable/student_input_bg</item>
+    </style>
+
 </resources>

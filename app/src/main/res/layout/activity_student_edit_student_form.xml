@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/student_background"
+    tools:context=".StudentEditStudentForm">
+
+    <TextView
+        android:id="@+id/studnt_main_title1"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/student_main_title"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"  />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/graduate" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@color/student_my_purple_with_full_opacity"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/student_ic_baseline_menu_24" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/student_upperbackground"
+        android:rotationX="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studnt_main_title1">
+
+        <LinearLayout
+            android:layout_width="414dp"
+            android:layout_height="605dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/displaystudentTitile"
+                android:layout_width="142dp"
+                android:layout_height="29dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="26dp"
+                android:text="@string/student_editstudentform_title"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/student_activity_titile_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/student_form_lable_name"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/student_editText_studentName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/input_bg"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingTop="10dp"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:paddingBottom="10dp"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constrainedWidth="true" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/student_form_lable_date"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/student_addstd_Date"
+                android:layout_width="361dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/student_input_bg"
+                android:ems="10"
+                android:inputType="date"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:textColor="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="206dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/student_form_lable_Contact_no"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/student_editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/input_bg"
+                android:ems="10"
+                android:hint="@string/student_form_ontact_no_hint"
+                android:inputType="phone"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/student_form_lable_address"
+                android:textColor="@color/my_purple"
+                android:textSize="@dimen/form_lable_text_Size"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/student_editTextEditAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/input_bg"
+                android:ems="10"
+                android:hint="@string/student_form_address_hint"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="@dimen/student_form_input_inner_padding_left"
+                android:paddingRight="@dimen/student_form_input_padding_right"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <android.widget.Button
+                android:id="@+id/AddNewStudentNavbutton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/student_form_input_height"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="90dp"
+                android:background="@drawable/student_submit_btn_bg"
+                android:onClick="editStudentSubmitPressed"
+                android:text="@string/student_edit_student_form_edit_btn_value"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

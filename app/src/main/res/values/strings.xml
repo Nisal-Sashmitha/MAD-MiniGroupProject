@@ -1,6 +1,39 @@
 <resources>
     <string name="app_name">Private Tutor Planner</string>
 
+
+    <!--*************************student strings***********************-->
+    <string name="student_main_title">Student</string>
+    <string name="student_form_lable_name">Name</string>
+    <string name="student_form_lable_date">Date</string>
+    <string name="student_form_lable_class">Classes</string>
+    <string name="student_form_lable_Contact_no">Contact Number</string>
+    <string name="student_form_lable_address">Address</string>
+    <string name="student_add_form_add_btn_value">Add</string>
+    <string name="student_addnewstudentform_title">New Student</string>
+    <string name="student_form_age_hint">age</string>
+    <string name="student_form_hint_select_class">select class</string>
+    <string name="student_form_ontact_no_hint">enter number</string>
+    <string name="student_form_address_hint">enter address</string>
+    <string name="student_students_search_title">Find Student</string>
+    <string name="student_studentssearch_Search_students_hint">Search students...</string>
+    <string name="student_display_student_details_dateofbirth">Date Of Birth</string>
+    <string name="student_edit_student_form_edit_btn_value">Update</string>
+    <string name="student_editstudentform_title">Edit Student</string>
+    <string name="student_display_student_details_address">Address</string>
+    <string name="student_display_student_update_payment_note_btn">Update Payment Note</string>
+    <string name="student_display_student_add_to_a_new_class_btn">Add To A New Class</string>
+    <string-array name="student_classes_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
     <!--Assignment Strings-->
     <string name="assign_title">Assignments</string>
     <string name="new_Asign">New Assignment</string>
@@ -35,6 +68,8 @@
     <string name="class_btn_add">Add</string>
     <string name="class_tv_label_class">Class</string>
     <string name="class_main_nav_Class">Class</string>
+    <string name="student_addToClassForm_Payment_lable">Payment</string>
+    <string name="student_paymentForm_month">Month/Semester</string>
     <string-array name="class_arryDays">
         <item>Select day</item>
         <item>Monday</item>
