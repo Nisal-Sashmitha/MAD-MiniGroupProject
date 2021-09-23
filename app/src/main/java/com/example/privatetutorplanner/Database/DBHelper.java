@@ -251,6 +251,84 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return result;
     }
+
+
+    //Read only module names
+    public Cursor readModules(){
+        String modulequery = "SELECT ID,Module_Name FROM " + UserMaster.Assignment.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(modulequery, null);
+        }
+        return cursor;
+    }
+
+    //Read specific module names
+
+    public Assignment getDetModules(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        //String modquery = "SELECT * FROM Assignment WHERE Module_Name = '" +module+ "'";
+       // String modquery = "select * from " + UserMaster.Assignment.TABLE_NAME + " where " + UserMaster.Assignment.COLUMN_NAME_MODULENAME + "='" + module + "'";
+        //db.rawQuery(modquery, null); db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        String selection = UserMaster.Assignment.COLUMN_NAME_ASSIGNID + "=?";
+        String[] selectionArgs = {Integer.toString(id)};
+        Assignment as2= null;
+        try {
+            Cursor cursor = db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+
+                    if (db != null){
+                        cursor.moveToFirst();
+
+                                as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
+                                        cursor.getString(2),
+                                        Integer.parseInt(cursor.getString(3)),
+                                        Integer.parseInt(cursor.getString(4)),
+                                        cursor.getString(5));
+
+                    }
+        }
+        catch(Exception E){
+            Log.i("Error",E.getMessage());
+            E.printStackTrace();
+
+        }
+        // return assignment
+        return as2;
+    }
+    //Delete One Row
+    public void deleteAssign(int row){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(UserMaster.Assignment.TABLE_NAME, " ID = ?", new String[]{Integer.toString(row)});
+        if(result == -1){
+            Log.i("Error","Data did not deleted");
+           // Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Log.i("Error","Data deleted successfully");
+           // Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void updateAssign(String row_id, String title, String module, String mark,String qu, String date){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(UserMaster.Assignment.COLUMN_NAME_TITLE, title);
+        cv.put(UserMaster.Assignment.COLUMN_NAME_MODULENAME, module);
+        cv.put(UserMaster.Assignment.COLUMN_NAME_MARKS, Integer.parseInt(mark));
+        cv.put(UserMaster.Assignment.COLUMN_NAME_Q, Integer.parseInt(qu));
+        cv.put(UserMaster.Assignment.COLUMN_NAME_DATE, date);
+
+        long result = db.update(UserMaster.Assignment.TABLE_NAME, cv, "ID = ?", new String[]{row_id});
+        if(result == -1){
+            //Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Log.i("Msg","Failed in Update");
+        }else {
+            //Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+            Log.i("Msg","Updated Succesfully");
+        }
+
+    }
+
     //----------End of Assignment Queries-----------
 
     //------Class queries

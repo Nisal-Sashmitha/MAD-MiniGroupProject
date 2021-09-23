@@ -13,6 +13,10 @@
         <activity android:name=".ClassIndividual" />
         <activity android:name=".ClassBasedDays" />
         <activity android:name=".StudentEditStudentForm" />
+        <activity android:name=".assign_update"></activity>
+        <activity android:name=".assign_childAdpt" />
+        <activity android:name=".asssignment_ret_adapt1" />
+        <activity android:name=".assignment_ret" />
         <activity android:name=".StudentDisplayStudent" />
         <activity android:name=".StudentStudentSearch" />
         <activity android:name=".studentPannel" />
