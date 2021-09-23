@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ public class StudentStudentSearch extends AppCompatActivity {
         setContentView(R.layout.activity_student_student_search);
         dbHelper = new DBHelper(this);
         InitStudents();
+
+
     }
 
     public void InitStudents(){
@@ -68,12 +71,17 @@ public class StudentStudentSearch extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+    public void navToStudent(View v,String name){
+        Intent i= new Intent(this,StudentDisplayStudent.class);
+        i.putExtra("studentName",name);
+
+        startActivity(i);
+    }
+
     public void navToAddNewStudent(View v){
-        addStudetnavbtn = findViewById(R.id.student_addNewbtn_In_search);
-
-
         Intent i= new Intent(this,StudentAddnewstudentActivity.class);
-        //i.putExtra("ABC","nisal");
+
+
         startActivity(i);
     }
 }

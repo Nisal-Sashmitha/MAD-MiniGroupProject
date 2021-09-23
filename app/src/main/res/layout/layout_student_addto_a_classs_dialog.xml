@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/student_items_lists_backgrund"
+    android:padding="@dimen/student_class_item_start_padding">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="104dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="@dimen/student_form_lable_margin_top"
+        android:layout_marginBottom="@dimen/student_search_item_inner_padding_top_bottom"
+        android:text="@string/student_form_lable_class"
+        android:textColor="@color/white"
+        android:textSize="@dimen/form_lable_text_Size"
+        android:textStyle="bold" />
+
+    <Spinner
+
+        android:id="@+id/student_selectClass_in_disply_addtocls_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/student_form_hint_select_class"
+        android:minHeight="@dimen/student_form_input_height"
+        android:paddingStart="@dimen/student_class_item_start_padding"
+        android:spinnerMode="dialog"/>
+
+
+
+
+    <TextView
+        android:id="@+id/student_payment_monthly_lable_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/student_form_lable_margin_top"
+        android:layout_marginBottom="@dimen/student_search_item_inner_padding_top_bottom"
+        android:text="@string/student_paymentForm_month"
+        android:textColor="@color/white"
+        android:textSize="@dimen/student_normal_text_size"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/student_semesterOrMonthEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/student_input_bg"
+        android:hint="semster/month"
+        android:minHeight="@dimen/student_form_input_height"
+        android:paddingStart="@dimen/student_class_item_start_padding"
+        android:textColor="@color/my_purple" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/student_form_lable_margin_top"
+        android:layout_marginBottom="@dimen/student_search_item_inner_padding_top_bottom"
+        android:text="@string/student_addToClassForm_Payment_lable"
+        android:textColor="@color/white"
+        android:textSize="@dimen/student_normal_text_size"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/student_Addclass_paidAmountForClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/student_input_bg"
+        android:hint="fee"
+        android:inputType="number"
+        android:minHeight="@dimen/student_form_input_height"
+        android:paddingStart="@dimen/student_class_item_start_padding"
+        android:textColor="@color/my_purple" />
+
+
+</LinearLayout>

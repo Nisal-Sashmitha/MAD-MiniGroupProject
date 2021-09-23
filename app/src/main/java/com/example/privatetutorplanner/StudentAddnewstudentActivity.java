@@ -15,18 +15,22 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.privatetutorplanner.Database.DBHelper;
+import com.example.privatetutorplanner.ModalClasses.Class;
 import com.example.privatetutorplanner.ModalClasses.Student;
+
+import java.util.ArrayList;
 
 public class StudentAddnewstudentActivity extends AppCompatActivity {
 
     Button newStudentAddbtn;
     DBHelper dbHelper;
     EditText name,date,contactNo,address;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_addnewstudent);
-        Spinner spinner = (Spinner) findViewById(R.id.planets_spinner);
+
 
         dbHelper = new DBHelper(this);
         newStudentAddbtn = findViewById(R.id.student_AddNewStudentNavbutton);
@@ -37,13 +41,6 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
 
 
 
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.student_classes_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
 
         
     }
@@ -70,6 +67,14 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+
+
+                    Intent i= new Intent(StudentAddnewstudentActivity.this,StudentDisplayStudent.class);
+                    i.putExtra("studentName",name.getText().toString());
+                    i.putExtra("studentID",dbHelper.getLastStudentID());
+
+                    startActivity(i);
+                    //Intent i= new Intent(this,PaymentnoteActivity.class);
                 }else{
                     Context context = getApplicationContext();
                     CharSequence text = "failed to add!";

@@ -1,18 +1,22 @@
 package com.example.privatetutorplanner.UtilityClasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.privatetutorplanner.ModalClasses.Student;
 import com.example.privatetutorplanner.R;
+
+import com.example.privatetutorplanner.StudentDisplayStudent;
+
 
 import java.util.ArrayList;
 
@@ -43,7 +47,11 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Clicked on "+students.get(position).getName(),Toast.LENGTH_SHORT).show();
+                Intent i= new Intent(v.getContext(), StudentDisplayStudent.class);
+
+                i.putExtra("studentName",students.get(position).getName());
+                i.putExtra("studentID",students.get(position).getStudentID());
+                context.startActivity(i);
             }
         });
 

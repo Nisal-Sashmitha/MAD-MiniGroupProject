@@ -17,6 +17,12 @@
     <string name="student_form_address_hint">enter address</string>
     <string name="student_students_search_title">Find Student</string>
     <string name="student_studentssearch_Search_students_hint">Search students...</string>
+    <string name="student_display_student_details_dateofbirth">Date Of Birth</string>
+    <string name="student_edit_student_form_edit_btn_value">Update</string>
+    <string name="student_editstudentform_title">Edit Student</string>
+    <string name="student_display_student_details_address">Address</string>
+    <string name="student_display_student_update_payment_note_btn">Update Payment Note</string>
+    <string name="student_display_student_add_to_a_new_class_btn">Add To A New Class</string>
     <string-array name="student_classes_array">
         <item>Mercury</item>
         <item>Venus</item>
@@ -62,6 +68,8 @@
     <string name="class_btn_add">Add</string>
     <string name="class_tv_label_class">Class</string>
     <string name="class_main_nav_Class">Class</string>
+    <string name="student_addToClassForm_Payment_lable">Payment</string>
+    <string name="student_paymentForm_month">Month/Semester</string>
     <string-array name="class_arryDays">
         <item>Select day</item>
         <item>Monday</item>

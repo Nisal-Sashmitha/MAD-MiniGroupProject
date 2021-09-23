@@ -113,7 +113,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/student_editText_studentName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/student_form_input_height"
             android:layout_marginStart="28dp"
@@ -138,6 +138,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/student_search_results_recycler_view"
             android:layout_width="387dp"
@@ -146,7 +147,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/student_editText_studentName" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
