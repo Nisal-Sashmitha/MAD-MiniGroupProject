@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i= new Intent(this,StudentStudentSearch.class);
         startActivity(i);
     }
-    public void moduleNav(View v){
-        Intent intent= new Intent(this,Modules_List.class);
-        startActivity(intent);
-    }
+//    public void moduleNav(View v){
+//        Intent intent= new Intent(this,Modules_List.class);
+//        startActivity(intent);
+//    }
 
 }

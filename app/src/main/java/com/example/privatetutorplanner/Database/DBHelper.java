@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.privatetutorplanner.ModalClasses.Module;
+//import com.example.privatetutorplanner.ModalClasses.Module;
 import com.example.privatetutorplanner.ModalClasses.Student;
 
 import java.util.ArrayList;
@@ -510,27 +510,27 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //start of module quries--------------------------------------------------
 
-    public boolean addModule(Module m){
-        //db instance
-        SQLiteDatabase db = getWritableDatabase();
-
-        //preparation
-        ContentValues values=new ContentValues();
-        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
-
-
-        //call insert db instence
-        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
-
-        if(newRowID >= 1)
-        {
-            return  true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+//    public boolean addModule(Module m){
+//        //db instance
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        //preparation
+//        ContentValues values=new ContentValues();
+//        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
+//
+//
+//        //call insert db instence
+//        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
+//
+//        if(newRowID >= 1)
+//        {
+//            return  true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//    }
     //----------End of Modules Queries-------------------------------------------------
 
 
