@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,51 +20,45 @@ import com.example.privatetutorplanner.UtilityClasses.Assignment.Assign_PopBtn;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class assignment_ret extends AppCompatActivity {
-
-
+public class assignment_class_ret extends AppCompatActivity {
     DBHelper ob;
     ArrayList<String> module_name;
+    ArrayList<Assignment> details;
     ArrayList<Integer> id;
     ArrayList<String> module;
-    ArrayList<Assignment> details;
+
 
     HashSet<String> sorter ;
-    asssignment_ret_adapt1 adpt;
+    assign_childAdpt child;
     RecyclerView recyclerView;
-    ImageView navAdd;
-    Dialog btnDialog;
-
+    ImageButton navAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignment_ret);
+        setContentView(R.layout.assignment_class_ret);
 
-        recyclerView= findViewById(R.id.recycle_assign1);
+        recyclerView= findViewById(R.id.recycle_assign_class);
         ob= new DBHelper(this);
-        module_name = new ArrayList<>();
         details=new ArrayList<>();
+        module_name = new ArrayList<>();
+
         module=new ArrayList<>();
         id=new ArrayList<>();
         sorter= new HashSet<String>();
-
-        btnDialog =new Dialog(this);
-
-
         storeModules();
-
         DetailModules();
 
-        try {
-            adpt = new asssignment_ret_adapt1(assignment_ret.this,this, module,details);
-            recyclerView.setAdapter(adpt);
-            recyclerView.setLayoutManager(new LinearLayoutManager(assignment_ret.this));
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error assign_ret :"+e, Toast.LENGTH_LONG).show();
-        }
-    }
 
+        try {
+            child = new assign_childAdpt(assignment_class_ret.this,this,details,"Physics");
+            recyclerView.setAdapter(child);
+            recyclerView.setLayoutManager(new LinearLayoutManager(assignment_class_ret.this));
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(),"Error assign_class_ret :"+e, Toast.LENGTH_LONG).show();
+        }
+
+    }
     void storeModules(){
         try {
             Cursor cursor = ob.readModules();
@@ -96,17 +91,19 @@ public class assignment_ret extends AppCompatActivity {
                 Log.v("key:", result.getModulename());
             }
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error  DetailModules:"+e, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Error  DetailModules assign_class:"+e, Toast.LENGTH_LONG).show();
         }
     }
 
     public void nav(View view){
-       /* Intent intent = new Intent(this, Assignment_add.class);
+      /*  Intent intent = new Intent(this, Assignment_.class);
         startActivity(intent);*/
 
         Assign_PopBtn pop= new Assign_PopBtn();
-       pop.show(getSupportFragmentManager(), "example dialog");
+        pop.show(getSupportFragmentManager(), "example dialog");
+
 
 
     }
+
 }

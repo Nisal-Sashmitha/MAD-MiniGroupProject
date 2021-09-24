@@ -34,11 +34,6 @@ public class Assignment_add extends AppCompatActivity {
         qu =findViewById(R.id.assign_etQ2);
         mark =  findViewById(R.id.assign_etMark2);
         date = findViewById(R.id.assign_Date2);
-
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
         addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +41,11 @@ public class Assignment_add extends AppCompatActivity {
                 validate();
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     public void Nav(){

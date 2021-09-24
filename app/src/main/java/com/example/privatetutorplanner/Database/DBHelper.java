@@ -329,6 +329,47 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Read only titles
+    public Cursor readTitle(){
+        String modulequery = "SELECT Title FROM " + UserMaster.Assignment.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(modulequery, null);
+        }
+        return cursor;
+    }
+
+    //Read assignments from title
+    public Assignment getAssignment(String title) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = UserMaster.Assignment.COLUMN_NAME_TITLE + "=?";
+        String[] selectionArgs = {title};
+        Assignment as2= null;
+        try {
+            Cursor cursor = db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+
+            if (db != null){
+                cursor.moveToFirst();
+
+                as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
+                        cursor.getString(2),
+                        Integer.parseInt(cursor.getString(3)),
+                        Integer.parseInt(cursor.getString(4)),
+                        cursor.getString(5));
+
+            }
+        }
+        catch(Exception E){
+            Log.i("Error",E.getMessage());
+            E.printStackTrace();
+
+        }
+        // return assignment
+        return as2;
+    }
+
     //----------End of Assignment Queries-----------
 
     //------Class queries

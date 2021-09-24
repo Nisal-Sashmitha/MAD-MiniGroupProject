@@ -32,7 +32,7 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
     private StudentClass stdcls;
     HashMap<String, Integer> classNameAndID = new HashMap<String, Integer>();
 
-    public StudentUpdatePaymentNoteDialog(StudentClass stdcls){
+    public StudentUpdatePaymentNoteDialog(StudentClass stdcls) {
         this.stdcls =stdcls;
     }
 
