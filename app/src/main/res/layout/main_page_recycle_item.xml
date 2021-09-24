@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout_mainpage"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/cardView_marginTop_mainPage"
         android:alpha="0.8"
-        app:cardBackgroundColor="@color/class_purple_with_opacity"
+        app:cardBackgroundColor="@color/purple_500"
         app:cardCornerRadius="@dimen/cardView_cornerRadius_MainPage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,8 +47,8 @@
 
             <TextView
                 android:id="@+id/tv_classTotalAmount_mainPage"
-                android:layout_width="49dp"
-                android:layout_height="22dp"
+                android:layout_width="81dp"
+                android:layout_height="31dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="Total"

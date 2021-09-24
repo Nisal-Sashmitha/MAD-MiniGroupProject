@@ -535,19 +535,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //------------end of class queries
 
 
-    //--example for main page query
-    public Cursor getCurrentClassDetails(){
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + UserMaster.Class.TABLE_NAME;
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query,null);
-        }
-        return cursor;
-    }
 
-
-    //--------------------------
 
     //start of module quries--------------------------------------------------
 
@@ -574,6 +562,39 @@ public class DBHelper extends SQLiteOpenHelper {
 //    }
     //----------End of Modules Queries-------------------------------------------------
 
+
+
+
+
+
+
+//oooooooooooooooooooo8888888888888888888888888999999999999999999
+    //Main Page Queries
+        //--example for main page query
+        public Cursor getCurrentClassDetails(){
+            SQLiteDatabase db = getReadableDatabase();
+            String query = "SELECT * FROM " + UserMaster.Class.TABLE_NAME;
+            Cursor cursor = null;
+            if(db != null){
+                cursor = db.rawQuery(query,null);
+            }
+            return cursor;
+        }
+
+        //Getting all students
+        public Cursor getALLStudents(){
+            SQLiteDatabase db = getReadableDatabase();
+            String query = "SELECT StudentID,ClassID FROM " + UserMaster.StudentClass.TABLE_NAME;
+            Cursor cursor = null;
+            if(db != null){
+                cursor = db.rawQuery(query,null);
+            }
+            return cursor;
+        }
+
+
+
+    //--------------------------
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
