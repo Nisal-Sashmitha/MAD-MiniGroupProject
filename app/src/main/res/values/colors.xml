@@ -25,4 +25,7 @@
     <color name="class_purple_with_opacity">#EE673AB7</color>
     <color name="class_blue_with_opacity">#EE3F51B5</color>
     <color name="class_dark_orchid">#9C27B0</color>
+
+    <!--MainPage colors-->
+    <color name="grey">#C0C0C0</color>
 </resources>

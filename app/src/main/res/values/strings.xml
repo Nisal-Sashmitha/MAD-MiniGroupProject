@@ -23,6 +23,8 @@
     <string name="student_display_student_details_address">Address</string>
     <string name="student_display_student_update_payment_note_btn">Update Payment Note</string>
     <string name="student_display_student_add_to_a_new_class_btn">Add To A New Class</string>
+    <string name="student_addToClassForm_Payment_lable">Payment</string>
+    <string name="student_paymentForm_month">Month/Semester</string>
     <string-array name="student_classes_array">
         <item>Mercury</item>
         <item>Venus</item>
@@ -68,8 +70,17 @@
     <string name="class_btn_add">Add</string>
     <string name="class_tv_label_class">Class</string>
     <string name="class_main_nav_Class">Class</string>
-    <string name="student_addToClassForm_Payment_lable">Payment</string>
-    <string name="student_paymentForm_month">Month/Semester</string>
+    <string name="class_btn_saturday">Saturday</string>
+    <string name="class_btn_sunday">Sunday</string>
+    <string name="class_tv_colon">:</string>
+    <string name="class_btn_module">Module</string>
+    <string name="class_btn_Student">Student</string>
+    <string name="class_btn_assignement">Assignement</string>
+    <string name="class_btn_update">Update</string>
+    <string name="class_tv_header_EditClass">Edit Class</string>
+    <string name="class_tv_noData">No Classes</string>
+    <string name="class_tv_header_Students">Students</string>
+    <string name="class_tv_noStudents">No Students</string>
     <string-array name="class_arryDays">
         <item>Select day</item>
         <item>Monday</item>
@@ -80,5 +91,16 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+
+    <!--Module Strings-->
+    <string name="tv_ModuleTopic">Modules</string>
+    <string name="tv_NewModule">New Module</string>
+    <string name="tv_ModuleName">Module Name</string>
+    <string name="btn_ModuleAdd">ADD</string>
+    <string name="btn_moduleNav">Modules</string>
+
+    <!--Main page Strings-->
+    <string name="tv_header_MainPage">Tutor Planner</string>
+    <string name="tv_header_MainPageDashboard">Dashboard</string>
 
 </resources>
