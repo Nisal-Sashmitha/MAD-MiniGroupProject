@@ -11,6 +11,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     Button addStudetnavbtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     public void navToAddNewStudent(View v){
         Intent i= new Intent(this,StudentStudentSearch.class);
         startActivity(i);
+    }
+    public void moduleNav(View v){
+        Intent intent= new Intent(this,Modules_List.class);
+        startActivity(intent);
     }
 
 }

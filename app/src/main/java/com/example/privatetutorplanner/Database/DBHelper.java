@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.privatetutorplanner.ModalClasses.Module;
 import com.example.privatetutorplanner.ModalClasses.Student;
 
 import java.util.ArrayList;
@@ -66,6 +67,20 @@ public class DBHelper extends SQLiteOpenHelper {
                 UserMaster.Class.COLUMN_NAME_MONTHLY_FEE + " REAL)";
 
         db.execSQL(SQL_CREATE_CLASS_TABLE);
+
+        //create Modules Table
+        String SQL_CREATE_MODULES=
+                "CREATE TABLE "+UserMaster.Module.TABLE_NAME+"("+
+                        UserMaster.Module.COLUMN_NAME_MODULEID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL,"+
+                        UserMaster.Module.COLUMN_NAME_CLASSID+" INTEGER,"+
+                        "FOREIGN KEY ("+UserMaster.Module.COLUMN_NAME_CLASSID+
+                        ") REFERENCES "+UserMaster.Class.TABLE_NAME+" ("+UserMaster.Class.COLUMN_NAME_CLASSID+")ON DELETE CASCADE)";
+
+        db.execSQL(SQL_CREATE_MODULES);
+
+
+
     }
     public boolean addStudent(Student s){
         SQLiteDatabase db= getWritableDatabase();
@@ -355,6 +370,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //------------end of class queries
+
+    //start of module quries--------------------------------------------------
+
+    public boolean addModule(Module m){
+        //db instance
+        SQLiteDatabase db = getWritableDatabase();
+
+        //preparation
+        ContentValues values=new ContentValues();
+        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
+
+
+        //call insert db instence
+        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
+
+        if(newRowID >= 1)
+        {
+            return  true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    //----------End of Modules Queries-------------------------------------------------
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {

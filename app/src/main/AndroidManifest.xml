@@ -22,6 +22,8 @@
         <activity android:name=".ClassAdd" />
         <activity android:name=".ClassDashboard" />
         <activity android:name=".Assignment_add" />
+        <activity android:name=".ModuleAdd" />
+        <activity android:name=".Modules_List" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

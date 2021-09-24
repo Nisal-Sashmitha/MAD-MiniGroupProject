@@ -81,4 +81,11 @@
         <item>Sunday</item>
     </string-array>
 
+    <!--Module Strings-->
+    <string name="tv_ModuleTopic">Modules</string>
+    <string name="tv_NewModule">New Module</string>
+    <string name="tv_ModuleName">Module Name</string>
+    <string name="btn_ModuleAdd">ADD</string>
+    <string name="btn_moduleNav">Modules</string>
+
 </resources>
