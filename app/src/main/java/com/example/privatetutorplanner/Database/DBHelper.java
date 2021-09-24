@@ -368,6 +368,119 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //retrieve all class data from selected day
+    public Cursor getClassesFromDay(String day){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_DAY + " =?";
+        String [] selectionArgs = {day};
+
+
+        Cursor  cursor = db.query(
+                UserMaster.Class.TABLE_NAME,
+                projections,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+
+    }
+
+    //fetch  class details based on ID
+    public Cursor getClassDetailsFromID(String id){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_CLASSID + " =?";
+        String [] selectionArgs = {id};
+
+        Cursor cursor = null;
+        if(db != null) {
+            cursor = db.query(
+                    UserMaster.Class.TABLE_NAME,
+                    projections,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null,
+                    null);
+        }
+
+        return cursor;
+
+    }
+
+    //update class details
+    public boolean updateClassData(Class c){
+        SQLiteDatabase db = getWritableDatabase();
+        String args[] = {c.getClassID()+""};
+
+        ContentValues values = new ContentValues();
+        values.put(UserMaster.Class.COLUMN_NAME_NAME,c.getClassName());
+        values.put(UserMaster.Class.COLUMN_NAME_DAY,c.getClassDay());
+        values.put(UserMaster.Class.COLUMN_NAME_TIME,c.getClassTime());
+        values.put(UserMaster.Class.COLUMN_NAME_MONTHLY_FEE,c.getClassFee());
+
+        long rslt = db.update(UserMaster.Class.TABLE_NAME,values,UserMaster.Class.COLUMN_NAME_CLASSID + " =?",args);
+        if(rslt == -1){
+            return false;
+        }
+        else
+            return true;
+    }
+
+    //delete class details
+    public boolean deleteClassDetails(String classID){
+        SQLiteDatabase db = getWritableDatabase();
+        String args[] = {classID};
+
+        long rslt = db.delete(UserMaster.Class.TABLE_NAME,UserMaster.Class.COLUMN_NAME_CLASSID + " =?",args);
+        if(rslt == -1){
+            return false;
+        }
+        else
+            return true;
+    }
+
+    //validate class input data
+    public boolean validateClassData(String className,String classDay,String classTime){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_NAME + " =? AND " + UserMaster.Class.COLUMN_NAME_DAY + " =? AND "+
+                UserMaster.Class.COLUMN_NAME_TIME + " =?" ;
+        String args[] = {className,classDay,classTime};
+
+        Cursor cursor = db.query(UserMaster.Class.TABLE_NAME, projections, selection, args, null, null, null, null);
+        if(cursor.getCount() == 0 )
+            return true; //valid
+        else
+            return false; //there are records - so invalid
+
+    }
 
     //------------end of class queries
 
