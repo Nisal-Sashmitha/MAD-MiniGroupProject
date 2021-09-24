@@ -79,6 +79,8 @@
     <string name="class_btn_update">Update</string>
     <string name="class_tv_header_EditClass">Edit Class</string>
     <string name="class_tv_noData">No Classes</string>
+    <string name="class_tv_header_Students">Students</string>
+    <string name="class_tv_noStudents">No Students</string>
     <string-array name="class_arryDays">
         <item>Select day</item>
         <item>Monday</item>
@@ -89,5 +91,9 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+
+    <!--Main page Strings-->
+    <string name="tv_header_MainPage">Tutor Planner</string>
+    <string name="tv_header_MainPageDashboard">Dashboard</string>
 
 </resources>

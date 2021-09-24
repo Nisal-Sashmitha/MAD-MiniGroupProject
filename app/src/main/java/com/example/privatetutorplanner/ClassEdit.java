@@ -123,7 +123,7 @@ public class ClassEdit extends AppCompatActivity {
         String cTime = classTime.getText().toString();
 
         //check validation
-        if(dbHelper.validateClassData(cName,cDay,cTime)){
+        if(dbHelper.validateClassData(cName,cDay,cTime) && spinner.getSelectedItemPosition() > 0){
 
             Class class1 = new Class();
 

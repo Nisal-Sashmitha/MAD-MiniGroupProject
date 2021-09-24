@@ -118,4 +118,13 @@ public class ClassIndividual extends AppCompatActivity {
         });
         builder.create().show();
     }
+
+    //nav to student list
+    public void navClassStudentList(View view){
+
+            Intent i = new Intent(ClassIndividual.this, ClassStudentList.class);
+            i.putExtra("SelectedClassID", classID);
+            startActivity(i);
+
+    }
 }

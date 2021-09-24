@@ -467,7 +467,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //get student names based on classID
+    public Cursor getStudentDataBasedID(String id){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select S.name from "+
+                UserMaster.Student.TABLE_NAME+" S, "+
+                UserMaster.StudentClass.TABLE_NAME+" SC WHERE SC.StudentID = S.studentID AND SC.ClassID ="+id,null);
+        return cursor;
+    }
+
     //------------end of class queries
+
+
+    //--example for main page query
+    public Cursor getCurrentClassDetails(){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + UserMaster.Class.TABLE_NAME;
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+
+
+    //--------------------------
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {

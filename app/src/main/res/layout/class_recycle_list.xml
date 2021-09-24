@@ -27,9 +27,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="textview"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:layout_constraintBaseline_toBaselineOf="@+id/class_tv_recycle_list_classFee"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -40,9 +40,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:text="text2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +55,7 @@
                 android:text="text3"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/class_tv_recycle_list_classID"
                 app:layout_constraintTop_toTopOf="parent" />
 

@@ -59,4 +59,10 @@ public class ClassDashboard extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    //example for main navigation
+    public void navMain(View view){
+        Intent i = new Intent(this,MainPage.class);
+        startActivity(i);
+    }
 }

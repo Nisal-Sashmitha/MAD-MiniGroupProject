@@ -18,8 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/class_ic_menubar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constaint_layout_middle3"
@@ -214,6 +213,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="90dp"
             android:backgroundTint="@color/purple_500"
+            android:onClick="navClassStudentList"
             android:text="@string/class_btn_Student"
             android:textAllCaps="false"
             android:textColor="@color/white"

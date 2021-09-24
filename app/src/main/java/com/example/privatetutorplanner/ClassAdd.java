@@ -96,7 +96,7 @@ public class ClassAdd extends AppCompatActivity {
                     String cDay = spinner.getSelectedItem().toString();
                     String cTime = classTime.getText().toString();
 
-                    if(dbHelper.validateClassData(cName,cDay,cTime)) {
+                    if(dbHelper.validateClassData(cName,cDay,cTime) && spinner.getSelectedItemPosition() > 0) {
 
                         Class class1 = new Class();
                         class1.setClassName(className.getText().toString());
@@ -121,7 +121,7 @@ public class ClassAdd extends AppCompatActivity {
                         }
                     }
                     else{
-                        Toast.makeText(ClassAdd.this, "Invalid class details.Records may exists already", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ClassAdd.this, "Invalid class details or records may exists already", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(ClassAdd.this, e.getMessage(), Toast.LENGTH_SHORT).show();
