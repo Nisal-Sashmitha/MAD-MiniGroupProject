@@ -17,7 +17,7 @@ public class initialLoadingActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i =new Intent(initialLoadingActivity.this,MainActivity.class);
+                Intent i =new Intent(initialLoadingActivity.this,MainPage.class);
                 startActivity(i);
                 finish();
             }
