@@ -75,6 +75,20 @@ public class StudentDisplayClassListRecyclerViewAdapter extends RecyclerView.Ada
                 context.startActivity(i);*/
             }
         });
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (context instanceof StudentDisplayStudent) {
+                    ((StudentDisplayStudent)context).removeStudentPressed(stdclasses.get(position).getClassID(),stdclasses.get(position).getClassName());
+                }
+                /*Intent i= new Intent(v.getContext(), StudentDisplayStudent.class);
+
+                i.putExtra("studentName",classes.get(position).getClassName());
+                i.putExtra("studentID",classes.get(position).getClassID());
+                context.startActivity(i);*/
+            }
+        });
 
     }
 
@@ -85,7 +99,7 @@ public class StudentDisplayClassListRecyclerViewAdapter extends RecyclerView.Ada
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView className,classDescription;
-        Button edtiButton;
+        Button edtiButton,deleteButton;
         LinearLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -95,6 +109,7 @@ public class StudentDisplayClassListRecyclerViewAdapter extends RecyclerView.Ada
             classDescription = itemView.findViewById(R.id.student_display_classes_payemnent_detail);
             parentLayout = itemView.findViewById(R.id.parent);
             edtiButton = itemView.findViewById(R.id.student_display_classes_editButton);
+            deleteButton = itemView.findViewById(R.id.student_display_classes_delete_btn);
         }
     }
 }

@@ -23,6 +23,8 @@
     <string name="student_display_student_details_address">Address</string>
     <string name="student_display_student_update_payment_note_btn">Update Payment Note</string>
     <string name="student_display_student_add_to_a_new_class_btn">Add To A New Class</string>
+    <string name="student_validation_error_name">Name cannot be empty</string>
+    <string name="student_validation_error_phoneNo">Invalid format</string>
     <string-array name="student_classes_array">
         <item>Mercury</item>
         <item>Venus</item>

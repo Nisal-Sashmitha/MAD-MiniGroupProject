@@ -228,6 +228,52 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return ID;
     }
+    public boolean deleteStudent(int studentID){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " +UserMaster.Student.TABLE_NAME
+                + " WHERE "+UserMaster.Student.COLUMN_NAME_STUDENTID+"='"+studentID+"'");
+        db.execSQL("DELETE FROM " +UserMaster.StudentClass.TABLE_NAME
+                + " WHERE "+UserMaster.StudentClass.COLUMN_NAME_STUDENTID+"='"+studentID+"'");
+        db.close();
+
+
+        return true;
+    }
+    public boolean deleteStudentClass(int classID,int studentID){
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.execSQL("DELETE FROM " +UserMaster.StudentClass.TABLE_NAME
+                    + " WHERE "+UserMaster.StudentClass.COLUMN_NAME_CLASSID+"='"+classID+"' AND "+
+                    UserMaster.StudentClass.COLUMN_NAME_STUDENTID+" = '"+studentID+"'");
+            db.close();
+
+
+        return true;
+    }
+    public ArrayList getStudentsByNameSearch(String s){
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from "+UserMaster.Student.TABLE_NAME+" WHERE "+
+                UserMaster.Student.COLUMN_NAME_NAME+" LIKE '%"+s+"%' OR "+
+                UserMaster.Student.COLUMN_NAME_STUDENTID+" LIKE '%"+s+"%'", null );
+        ArrayList<Student> std = new ArrayList<>();
+
+        try {
+            while (res.moveToNext()) {
+                Student student = new Student();
+                student.setStudentID(res.getInt(0));
+                student.setName(res.getString(1));
+                student.setAddress(res.getString(2));
+                student.setContactNo(res.getString(3));
+                student.setDateOfBirth(res.getString(4));
+                std.add(student);
+            }
+        } finally {
+            res.close();
+        }
+
+        return std;
+    }
     //----------Asignmeent SQL Queries--------------
 
     public boolean addAssign(Assignment as1) {

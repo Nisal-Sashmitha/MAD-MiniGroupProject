@@ -14,17 +14,25 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.privatetutorplanner.Database.DBHelper;
 import com.example.privatetutorplanner.ModalClasses.Class;
 import com.example.privatetutorplanner.ModalClasses.Student;
+import com.example.privatetutorplanner.UtilityClasses.StudentValidations;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentAddnewstudentActivity extends AppCompatActivity {
 
     Button newStudentAddbtn;
     DBHelper dbHelper;
     EditText name,date,contactNo,address;
+    AwesomeValidation awesomeValidation;
+    StudentValidations studentValidations = new StudentValidations();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +47,16 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
         contactNo = findViewById(R.id.student_addstd_ContactNo);
         address = findViewById(R.id.student_addstd_Address);
 
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
+        //validation for name
+        awesomeValidation.addValidation(this,R.id.student_addstd_Name,
+                RegexTemplate.NOT_EMPTY,R.string.student_validation_error_name);
+        //validation for phone no
+        awesomeValidation.addValidation(this,R.id.student_addstd_ContactNo,
+                "[0-9]{10}",R.string.student_validation_error_phoneNo);
+        awesomeValidation.addValidation(this,R.id.student_addstd_Date,
+                "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$",R.string.student_validation_error_phoneNo);
 
 
         
@@ -53,36 +70,42 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
         newStudentAddbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Student s = new Student();
-                s.setAddress(address.getText().toString());
-                s.setContactNo(contactNo.getText().toString());
-                s.setDateOfBirth(date.getText().toString());
-                s.setName(name.getText().toString());
+                if(awesomeValidation.validate() || studentValidations.phoneNoValidator(contactNo.getText().toString())){
+                    Student s = new Student();
+                    s.setAddress(address.getText().toString());
+                    s.setContactNo(contactNo.getText().toString());
+                    s.setDateOfBirth(date.getText().toString());
+                    s.setName(name.getText().toString());
 
-                boolean flag = dbHelper.addStudent(s);
-                if(flag){
-                    Context context = getApplicationContext();
-                    CharSequence text = "student added!";
-                    int duration = Toast.LENGTH_SHORT;
+                    boolean flag = dbHelper.addStudent(s);
+                    if(flag){
+                        Context context = getApplicationContext();
+                        CharSequence text = "student added!";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
 
-                    Intent i= new Intent(StudentAddnewstudentActivity.this,StudentDisplayStudent.class);
-                    i.putExtra("studentName",name.getText().toString());
-                    i.putExtra("studentID",dbHelper.getLastStudentID());
+                        Intent i= new Intent(StudentAddnewstudentActivity.this,StudentDisplayStudent.class);
+                        i.putExtra("studentName",name.getText().toString());
+                        i.putExtra("studentID",dbHelper.getLastStudentID());
 
-                    startActivity(i);
-                    //Intent i= new Intent(this,PaymentnoteActivity.class);
-                }else{
-                    Context context = getApplicationContext();
-                    CharSequence text = "failed to add!";
-                    int duration = Toast.LENGTH_SHORT;
+                        startActivity(i);
+                        //Intent i= new Intent(this,PaymentnoteActivity.class);
+                    }else{
+                        Context context = getApplicationContext();
+                        CharSequence text = "failed to add!";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }else {
+                    Toast toast = Toast.makeText(StudentAddnewstudentActivity.this,"validation failed", Toast.LENGTH_SHORT);
                     toast.show();
                 }
+
             }
         });
     }
@@ -94,5 +117,13 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
         //Intent i= new Intent(this,PaymentnoteActivity.class);
         //i.putExtra("ABC","nisal");
         //startActivity(i);
+    }
+
+    public boolean phoneNoValidator(String phoneNo){
+        if (phoneNo.matches("[0-9]{10}"))
+            return true ;
+        else
+            return false;
+
     }
 }

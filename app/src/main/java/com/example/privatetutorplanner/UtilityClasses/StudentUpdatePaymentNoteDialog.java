@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +15,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.privatetutorplanner.Database.DBHelper;
 import com.example.privatetutorplanner.ModalClasses.Class;
 import com.example.privatetutorplanner.ModalClasses.StudentClass;
 import com.example.privatetutorplanner.R;
+import com.example.privatetutorplanner.StudentDisplayStudent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
     private Spinner spinner;
@@ -31,6 +39,7 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
     DBHelper dbHelper;
     private StudentClass stdcls;
     HashMap<String, Integer> classNameAndID = new HashMap<String, Integer>();
+    AwesomeValidation awesomeValidation;
 
     public StudentUpdatePaymentNoteDialog(StudentClass stdcls){
         this.stdcls =stdcls;
@@ -59,13 +68,13 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
 
                 String className =spinner.getSelectedItem().toString();
                 String month =editTextMonth.getText().toString();
-                double fee;
+                double fee= checkFee(editTextFee.getText().toString());
 
-                if(editTextFee.getText().toString().isEmpty()){
+                /*if(editTextFee.getText().toString().isEmpty()){
                     fee =0;
                 }else {
                     fee =Double.parseDouble(editTextFee.getText().toString());
-                }
+                }*/
 
 
                 int classID = stdcls.getClassID();
@@ -79,6 +88,10 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
         spinner = view.findViewById(R.id.student_selectClass_in_disply_addtocls_spinner);
         editTextMonth = view.findViewById(R.id.student_semesterOrMonthEditText);
         editTextFee = view.findViewById(R.id.student_Addclass_paidAmountForClass);
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+        //validation for name
+
 
 
 
@@ -114,5 +127,16 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
 
     public interface StudentEditPaymentNoteDialogListner{
         void updateClassDetFromDiolog(int classID,String month,double fee);
+    }
+
+    public Double checkFee(String value){
+        double fee;
+
+        if(value.isEmpty()){
+            fee =0;
+        }else {
+            fee =Double.parseDouble(value);
+        }
+        return fee;
     }
 }

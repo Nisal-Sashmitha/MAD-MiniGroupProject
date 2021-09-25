@@ -1,14 +1,17 @@
 package com.example.privatetutorplanner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import com.example.privatetutorplanner.ModalClasses.StudentClass;
 import com.example.privatetutorplanner.UtilityClasses.StudentAddClassToStdDialog;
 import com.example.privatetutorplanner.UtilityClasses.StudentDisplayClassListRecyclerViewAdapter;
 import com.example.privatetutorplanner.UtilityClasses.StudentUpdatePaymentNoteDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,6 +33,7 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
     protected Student student;
     DBHelper dbHelper;
     TextView birthdate,contactNo,address;
+
     private ArrayList<Class> classes = new ArrayList<>();
     private ArrayList<StudentClass> stdclasses = new ArrayList<>();
     @Override
@@ -56,33 +61,11 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
         InitClasses();
 
 
+
+
     }
     public void InitClasses(){
-        /*Class s1= new Class();
-        s1.setClassName("class1");
-        Class s2= new Class();
-        s2.setClassName("class1");
-        Class s3= new Class();
-        s3.setClassName("class1");
-        Class s4= new Class();
-        s4.setClassName("class1");
-        Class s5= new Class();
-        s5.setClassName("class1");
-        Class s6= new Class();
-        s6.setClassName("class1");
-        Class s7= new Class();
-        s7.setClassName("class1");
-        Class s8= new Class();
-        s8.setClassName("class1");
 
-        classes.add(s1);
-        classes.add(s2);
-        classes.add(s3);
-        classes.add(s4);
-        classes.add(s5);
-        classes.add(s6);
-        classes.add(s7);
-        classes.add(s8);*/
 
         stdclasses = dbHelper.getClassesOfStudent(ID);
         initRecyclerView();
@@ -107,6 +90,63 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
         intent.putExtra("contact", student.getContactNo());
         intent.putExtra("address", student.getAddress());
         startActivity(intent);
+    }
+    public void deleteStudentPressed(View v){
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+                .setTitle("Warning!")
+                .setMessage("Do you really want to delete this student? (this process cannot be undone)")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean flag = dbHelper.deleteStudent(ID);
+                        if(flag){
+                            Toast.makeText(StudentDisplayStudent.this,"Successfully Deleted!",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            Intent i= new Intent(StudentDisplayStudent.this,StudentStudentSearch.class);
+                            startActivity(i);
+                        }else{
+                            Toast.makeText(StudentDisplayStudent.this,"Failed to delete!",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+
+
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(StudentDisplayStudent.this,"Deleting Canceled",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                }).create();
+        dialog.show();
+    }
+    public void removeStudentPressed(int classID,String classname){
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+                .setTitle("Warning!")
+                .setMessage("Do you really want remove this student from "+classname+"? (this process cannot be undone)")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean flag = dbHelper.deleteStudentClass(classID,ID);
+                        if(flag){
+                            Toast.makeText(StudentDisplayStudent.this,"Successfully Removed!",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            InitClasses();
+                        }else{
+                            Toast.makeText(StudentDisplayStudent.this,"Failed To Remove!",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+
+
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(StudentDisplayStudent.this,"Removing Canceled",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                }).create();
+        dialog.show();
     }
     public void editStudentClassPressed(StudentClass stdcls){
 
@@ -166,24 +206,24 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
             boolean flag = dbHelper.addStudentToAclass(ID,classID,fee,month);
             if(flag){
-                Context context = getApplicationContext();
-                CharSequence text = "Succesfull added!";
-                int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
+                CharSequence text = "Succesfully added!";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(StudentDisplayStudent.this, text, duration);
                 toast.show();
-
-                Intent i= new Intent(this, StudentDisplayStudent.class);
+                InitClasses();
+                /*Intent i= new Intent(this, StudentDisplayStudent.class);
 
                 i.putExtra("studentName",studentName);
                 i.putExtra("studentID",ID);
-                startActivity(i);
+                startActivity(i);*/
             }else{
-                Context context = getApplicationContext();
-                CharSequence text = "faild to insert!";
-                int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
+                CharSequence text = "faild to insert!";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(StudentDisplayStudent.this, text, duration);
                 toast.show();
             }
         }
