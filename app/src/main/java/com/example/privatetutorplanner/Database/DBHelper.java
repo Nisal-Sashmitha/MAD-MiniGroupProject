@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+//import com.example.privatetutorplanner.ModalClasses.Module;
 import com.example.privatetutorplanner.ModalClasses.Student;
 
 import java.util.ArrayList;
@@ -66,6 +67,20 @@ public class DBHelper extends SQLiteOpenHelper {
                 UserMaster.Class.COLUMN_NAME_MONTHLY_FEE + " REAL)";
 
         db.execSQL(SQL_CREATE_CLASS_TABLE);
+
+        //create Modules Table
+        String SQL_CREATE_MODULES=
+                "CREATE TABLE "+UserMaster.Module.TABLE_NAME+"("+
+                        UserMaster.Module.COLUMN_NAME_MODULEID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL,"+
+                        UserMaster.Module.COLUMN_NAME_CLASSID+" INTEGER,"+
+                        "FOREIGN KEY ("+UserMaster.Module.COLUMN_NAME_CLASSID+
+                        ") REFERENCES "+UserMaster.Class.TABLE_NAME+" ("+UserMaster.Class.COLUMN_NAME_CLASSID+")ON DELETE CASCADE)";
+
+        db.execSQL(SQL_CREATE_MODULES);
+
+
+
     }
     public boolean addStudent(Student s){
         SQLiteDatabase db= getWritableDatabase();
@@ -297,6 +312,125 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return result;
     }
+
+
+    //Read only module names
+    public Cursor readModules(){
+        String modulequery = "SELECT ID,Module_Name FROM " + UserMaster.Assignment.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(modulequery, null);
+        }
+        return cursor;
+    }
+
+    //Read specific module names
+
+    public Assignment getDetModules(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        //String modquery = "SELECT * FROM Assignment WHERE Module_Name = '" +module+ "'";
+       // String modquery = "select * from " + UserMaster.Assignment.TABLE_NAME + " where " + UserMaster.Assignment.COLUMN_NAME_MODULENAME + "='" + module + "'";
+        //db.rawQuery(modquery, null); db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        String selection = UserMaster.Assignment.COLUMN_NAME_ASSIGNID + "=?";
+        String[] selectionArgs = {Integer.toString(id)};
+        Assignment as2= null;
+        try {
+            Cursor cursor = db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+
+                    if (db != null){
+                        cursor.moveToFirst();
+
+                                as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
+                                        cursor.getString(2),
+                                        Integer.parseInt(cursor.getString(3)),
+                                        Integer.parseInt(cursor.getString(4)),
+                                        cursor.getString(5));
+
+                    }
+        }
+        catch(Exception E){
+            Log.i("Error",E.getMessage());
+            E.printStackTrace();
+
+        }
+        // return assignment
+        return as2;
+    }
+    //Delete One Row
+    public void deleteAssign(int row){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(UserMaster.Assignment.TABLE_NAME, " ID = ?", new String[]{Integer.toString(row)});
+        if(result == -1){
+            Log.i("Error","Data did not deleted");
+           // Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Log.i("Error","Data deleted successfully");
+           // Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void updateAssign(String row_id, String title, String module, String mark,String qu, String date){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(UserMaster.Assignment.COLUMN_NAME_TITLE, title);
+        cv.put(UserMaster.Assignment.COLUMN_NAME_MODULENAME, module);
+        cv.put(UserMaster.Assignment.COLUMN_NAME_MARKS, Integer.parseInt(mark));
+        cv.put(UserMaster.Assignment.COLUMN_NAME_Q, Integer.parseInt(qu));
+        cv.put(UserMaster.Assignment.COLUMN_NAME_DATE, date);
+
+        long result = db.update(UserMaster.Assignment.TABLE_NAME, cv, "ID = ?", new String[]{row_id});
+        if(result == -1){
+            //Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Log.i("Msg","Failed in Update");
+        }else {
+            //Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+            Log.i("Msg","Updated Succesfully");
+        }
+
+    }
+
+    //Read only titles
+    public Cursor readTitle(){
+        String modulequery = "SELECT Title FROM " + UserMaster.Assignment.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(modulequery, null);
+        }
+        return cursor;
+    }
+
+    //Read assignments from title
+    public Assignment getAssignment(String title) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = UserMaster.Assignment.COLUMN_NAME_TITLE + "=?";
+        String[] selectionArgs = {title};
+        Assignment as2= null;
+        try {
+            Cursor cursor = db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+
+            if (db != null){
+                cursor.moveToFirst();
+
+                as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
+                        cursor.getString(2),
+                        Integer.parseInt(cursor.getString(3)),
+                        Integer.parseInt(cursor.getString(4)),
+                        cursor.getString(5));
+
+            }
+        }
+        catch(Exception E){
+            Log.i("Error",E.getMessage());
+            E.printStackTrace();
+
+        }
+        // return assignment
+        return as2;
+    }
+
     //----------End of Assignment Queries-----------
 
     //------Class queries
@@ -321,8 +455,192 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //retrieve all class data from selected day
+    public Cursor getClassesFromDay(String day){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_DAY + " =?";
+        String [] selectionArgs = {day};
+
+
+        Cursor  cursor = db.query(
+                UserMaster.Class.TABLE_NAME,
+                projections,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+
+    }
+
+    //fetch  class details based on ID
+    public Cursor getClassDetailsFromID(String id){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_CLASSID + " =?";
+        String [] selectionArgs = {id};
+
+        Cursor cursor = null;
+        if(db != null) {
+            cursor = db.query(
+                    UserMaster.Class.TABLE_NAME,
+                    projections,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null,
+                    null);
+        }
+
+        return cursor;
+
+    }
+
+    //update class details
+    public boolean updateClassData(Class c){
+        SQLiteDatabase db = getWritableDatabase();
+        String args[] = {c.getClassID()+""};
+
+        ContentValues values = new ContentValues();
+        values.put(UserMaster.Class.COLUMN_NAME_NAME,c.getClassName());
+        values.put(UserMaster.Class.COLUMN_NAME_DAY,c.getClassDay());
+        values.put(UserMaster.Class.COLUMN_NAME_TIME,c.getClassTime());
+        values.put(UserMaster.Class.COLUMN_NAME_MONTHLY_FEE,c.getClassFee());
+
+        long rslt = db.update(UserMaster.Class.TABLE_NAME,values,UserMaster.Class.COLUMN_NAME_CLASSID + " =?",args);
+        if(rslt == -1){
+            return false;
+        }
+        else
+            return true;
+    }
+
+    //delete class details
+    public boolean deleteClassDetails(String classID){
+        SQLiteDatabase db = getWritableDatabase();
+        String args[] = {classID};
+
+        long rslt = db.delete(UserMaster.Class.TABLE_NAME,UserMaster.Class.COLUMN_NAME_CLASSID + " =?",args);
+        if(rslt == -1){
+            return false;
+        }
+        else
+            return true;
+    }
+
+    //validate class input data
+    public boolean validateClassData(String className,String classDay,String classTime){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Class.COLUMN_NAME_CLASSID,
+                UserMaster.Class.COLUMN_NAME_NAME,
+                UserMaster.Class.COLUMN_NAME_DAY,
+                UserMaster.Class.COLUMN_NAME_TIME,
+                UserMaster.Class.COLUMN_NAME_MONTHLY_FEE
+        };
+        String selection = UserMaster.Class.COLUMN_NAME_NAME + " =? AND " + UserMaster.Class.COLUMN_NAME_DAY + " =? AND "+
+                UserMaster.Class.COLUMN_NAME_TIME + " =?" ;
+        String args[] = {className,classDay,classTime};
+
+        Cursor cursor = db.query(UserMaster.Class.TABLE_NAME, projections, selection, args, null, null, null, null);
+        if(cursor.getCount() == 0 )
+            return true; //valid
+        else
+            return false; //there are records - so invalid
+
+    }
+
+    //get student names based on classID
+    public Cursor getStudentDataBasedID(String id){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select S.name from "+
+                UserMaster.Student.TABLE_NAME+" S, "+
+                UserMaster.StudentClass.TABLE_NAME+" SC WHERE SC.StudentID = S.studentID AND SC.ClassID ="+id,null);
+        return cursor;
+    }
 
     //------------end of class queries
+
+
+
+
+    //start of module quries--------------------------------------------------
+
+//    public boolean addModule(Module m){
+//        //db instance
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        //preparation
+//        ContentValues values=new ContentValues();
+//        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
+//
+//
+//        //call insert db instence
+//        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
+//
+//        if(newRowID >= 1)
+//        {
+//            return  true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//    }
+    //----------End of Modules Queries-------------------------------------------------
+
+
+
+
+
+
+
+//oooooooooooooooooooo8888888888888888888888888999999999999999999
+    //Main Page Queries
+        //--example for main page query
+        public Cursor getCurrentClassDetails(){
+            SQLiteDatabase db = getReadableDatabase();
+            String query = "SELECT * FROM " + UserMaster.Class.TABLE_NAME;
+            Cursor cursor = null;
+            if(db != null){
+                cursor = db.rawQuery(query,null);
+            }
+            return cursor;
+        }
+
+        //Getting all students
+        public Cursor getALLStudents(){
+            SQLiteDatabase db = getReadableDatabase();
+            String query = "SELECT StudentID,ClassID FROM " + UserMaster.StudentClass.TABLE_NAME;
+            Cursor cursor = null;
+            if(db != null){
+                cursor = db.rawQuery(query,null);
+            }
+            return cursor;
+        }
+
+
+
+    //--------------------------
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout_main3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/class_madd_background"
+    tools:context=".ClassIndividual">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/class_madd_backgrounda_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constaint_layout_middle3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/class_top_round_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constratinlayout_inside_activity4"
+            android:layout_width="325dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_Student"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/class_tv_selectedClassDetails1"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:text="@string/class_tv_label_day"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_colon1"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/class_tv_colon"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_selectedClassDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Monday"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <TextView
+                    android:id="@+id/class_tv_selectedClassDetails2"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:text="Time"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_colon2"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/class_tv_colon"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_selected_classTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/class_tv_label_time"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/class_tv_selectedClassDetails3"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/class_tv_label_monthlyfee"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_colon3"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/class_tv_colon"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/class_tv_selectedClassFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2500.00"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/class_btn_Module"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="90dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="@string/class_btn_module"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_Assignment"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/class_btn_Assignment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="90dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="@string/class_btn_assignement"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_Module"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/class_btn_Student"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/class_btn_Student"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="90dp"
+            android:backgroundTint="@color/purple_500"
+            android:onClick="navClassStudentList"
+            android:text="@string/class_btn_Student"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/class_btn_round_corners"
+            app:layout_constraintBottom_toTopOf="@+id/class_btn_Assignment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constratinlayout_inside_activity4"
+            app:strokeColor="@color/purple_500"
+            app:strokeWidth="2dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/constratinlayout_inside_activity4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/class_tv_selectedClassName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:text="ClassName"
+                android:textColor="@color/purple_500"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/class_iv_delete"
+                android:layout_width="44dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="confirmaDiaglogDeleteClass"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/class_ic_deleteicon" />
+
+            <ImageView
+                android:id="@+id/class_iv_edit"
+                android:layout_width="44dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="navClassEdit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/class_iv_delete"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/class_ic_editicon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_Classes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/class_tv__header_Classes"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constaint_layout_middle3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
+
+    <ImageView
+        android:id="@+id/mainAppIcon"
+        android:layout_width="73dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_Classes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:srcCompat="@drawable/class_main_app_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

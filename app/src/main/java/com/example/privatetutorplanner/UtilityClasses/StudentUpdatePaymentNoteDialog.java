@@ -41,7 +41,7 @@ public class StudentUpdatePaymentNoteDialog extends AppCompatDialogFragment{
     HashMap<String, Integer> classNameAndID = new HashMap<String, Integer>();
     AwesomeValidation awesomeValidation;
 
-    public StudentUpdatePaymentNoteDialog(StudentClass stdcls){
+    public StudentUpdatePaymentNoteDialog(StudentClass stdcls) {
         this.stdcls =stdcls;
     }
 

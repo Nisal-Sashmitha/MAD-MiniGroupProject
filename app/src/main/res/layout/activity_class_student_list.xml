@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/class_madd_background"
+    tools:context=".ClassStudentList">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/class_madd_backgrounda_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constaint_layout_middle2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/class_top_round_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:layout_constraintVertical_bias="0.0"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/classs_student_tv_header_students"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/class_tv_header_Students"
+            android:textColor="#673AB7"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/class_student_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingTop="@dimen/class_recycle_view_padding_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/classs_student_tv_header_students"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/class_student_iv_noData"
+            android:layout_width="187dp"
+            android:layout_height="158dp"
+            android:layout_marginTop="50dp"
+            android:alpha="@dimen/class_alphaValue_noData"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/class_student_recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/class_student_recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/classs_student_tv_header_students"
+            app:srcCompat="@drawable/class_nodata_icon" />
+
+        <TextView
+            android:id="@+id/class_student_tv_noData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:alpha="@dimen/class_alphaValue_noData"
+            android:text="@string/class_tv_noStudents"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/class_student_recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/class_student_recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/class_student_iv_noData" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/class_floatActionButton_studentAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.8"
+            android:backgroundTint="@color/class_purple_with_opacity"
+            android:clickable="true"
+            android:onClick="navStudentSearch"
+            app:layout_constraintBottom_toBottomOf="@+id/class_student_recyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/class_student_recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/class_student_recyclerView"
+            app:srcCompat="@drawable/class_ic_add" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_Classes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/class_tv__header_Classes"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constaint_layout_middle2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
+
+    <ImageView
+        android:id="@+id/mainAppIcon"
+        android:layout_width="73dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_Classes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:srcCompat="@drawable/class_main_app_icon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
