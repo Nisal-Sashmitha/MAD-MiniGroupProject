@@ -53,10 +53,16 @@ public class asssignment_ret_adapt1 extends RecyclerView.Adapter<asssignment_ret
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position ) {
+        //Only Module Name is assigned to Textview, which is obtained via HashSet
        holder.modname.setText(String.valueOf(module_name.get(position)));
 
         try {
-            assign_childAdpt child = new assign_childAdpt( activity,context,asign,String.valueOf(module_name.get(position)));
+            //Remaining assignment details are sent to next adapter
+            assign_childAdpt child = new assign_childAdpt( activity,
+                                    context,
+                                    asign,
+                                String.valueOf(module_name.get(position)));
+
             holder.rv.setAdapter(child);
             holder.rv.setLayoutManager(new LinearLayoutManager(activity));
             holder.rv.setNestedScrollingEnabled(true);
