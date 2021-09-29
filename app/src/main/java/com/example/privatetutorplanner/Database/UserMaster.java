@@ -56,7 +56,6 @@ public class UserMaster {
         public static final String TABLE_NAME="module";
         public static final String COLUMN_NAME_MODULEID="moduleID";
         public static final String COLUMN_NAME_MODULENAME="name";
-        public static final String COLUMN_NAME_CLASSID="classID";
 
     }
 

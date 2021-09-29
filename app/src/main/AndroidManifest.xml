@@ -28,6 +28,9 @@
         <activity android:name=".StudentAddnewstudentActivity" />
         <activity android:name=".ClassDashboard" />
         <activity android:name=".Assignment_add" />
+        <activity android:name=".ModuleAdd" />
+        <activity android:name=".Modules_List" />
+        <activity android:name=".Edit_Module"/>
         <activity android:name=".MainActivity"/>
 
 
