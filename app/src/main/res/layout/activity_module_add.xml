@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/modulebg"
+    tools:context=".ModuleAdd">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="420dp"
+        android:layout_height="481dp"
+        android:background="@drawable/modulelayout_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_NewModule"
+            android:layout_width="122dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="145dp"
+            android:layout_marginBottom="42dp"
+            android:text="@string/tv_NewModule"
+            android:textColor="@color/purple_500"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_ModuleName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_ModuleName"
+            android:layout_width="334dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/moduleinputfields"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_AddModule"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ModuleName"
+            android:layout_width="303dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/tv_ModuleName"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_ModuleName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_AddModule"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginBottom="266dp"
+            android:background="@drawable/module_buttons"
+            android:text="@string/btn_ModuleAdd"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_ModuleTopic1"
+        android:layout_width="143dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/tv_ModuleTopic"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/modulecap" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

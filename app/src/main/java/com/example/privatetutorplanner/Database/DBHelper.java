@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 //import com.example.privatetutorplanner.ModalClasses.Module;
+import com.example.privatetutorplanner.ModalClasses.Module;
 import com.example.privatetutorplanner.ModalClasses.Student;
 
 import java.util.ArrayList;
@@ -72,10 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String SQL_CREATE_MODULES=
                 "CREATE TABLE "+UserMaster.Module.TABLE_NAME+"("+
                         UserMaster.Module.COLUMN_NAME_MODULEID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL,"+
-                        UserMaster.Module.COLUMN_NAME_CLASSID+" INTEGER,"+
-                        "FOREIGN KEY ("+UserMaster.Module.COLUMN_NAME_CLASSID+
-                        ") REFERENCES "+UserMaster.Class.TABLE_NAME+" ("+UserMaster.Class.COLUMN_NAME_CLASSID+")ON DELETE CASCADE)";
+                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL)";
 
         db.execSQL(SQL_CREATE_MODULES);
 
@@ -584,28 +582,72 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //start of module quries--------------------------------------------------
+    //add modules
+    public boolean addModule(Module m){
+        //db instance
+        SQLiteDatabase db = getWritableDatabase();
 
-//    public boolean addModule(Module m){
-//        //db instance
-//        SQLiteDatabase db = getWritableDatabase();
-//
-//        //preparation
-//        ContentValues values=new ContentValues();
-//        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
-//
-//
-//        //call insert db instence
-//        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
-//
-//        if(newRowID >= 1)
-//        {
-//            return  true;
-//        }
-//        else
-//        {
-//            return false;
-//        }
-//    }
+        //preparation
+        ContentValues values=new ContentValues();
+        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
+
+
+        //call insert db instence
+        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
+
+        if(newRowID >= 1)
+        {
+            return  true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //read all data
+    public Cursor readAllModuleData(){
+        String query = "SELECT * FROM " + UserMaster.Module.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+
+    //update
+    public void updateModule(String row_id,String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(UserMaster.Module.COLUMN_NAME_MODULENAME, name);
+
+        long result =db.update(UserMaster.Module.TABLE_NAME,cv, "moduleID = ?", new String[]{row_id});
+        if(result == -1){
+
+            Toast.makeText(null,"Failed to Update",Toast.LENGTH_SHORT).show();
+
+        }else{
+
+            Toast.makeText(null,"Successfully Updated",Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    //delete
+    public boolean deleteOneRowModule(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(UserMaster.Module.TABLE_NAME, "moduleID=?", new String[]{String.valueOf(row_id)});
+        if(result == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     //----------End of Modules Queries-------------------------------------------------
 
 

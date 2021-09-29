@@ -95,14 +95,17 @@
     </string-array>
 
     <!--Module Strings-->
-    <string name="tv_ModuleTopic">Modules</string>
-    <string name="tv_NewModule">New Module</string>
-    <string name="tv_ModuleName">Module Name</string>
     <string name="btn_ModuleAdd">ADD</string>
-    <string name="btn_moduleNav">Modules</string>
+    <string name="tv_ModuleName">Module Name</string>
+    <string name="tv_NewModule">New Module</string>
+    <string name="tv_ModuleTopic">Modules</string>
+    <string name="topicmoduleedit">Modules</string>
+    <string name="topicmoduleedit1">Edit Module</string>
 
     <!--Main page Strings-->
     <string name="tv_header_MainPage">Tutor Planner</string>
     <string name="tv_header_MainPageDashboard">Dashboard</string>
+    <string name="btnEditModule">EDIT</string>
+    <string name="moduleNav_btn">Modules</string>
 
 </resources>
