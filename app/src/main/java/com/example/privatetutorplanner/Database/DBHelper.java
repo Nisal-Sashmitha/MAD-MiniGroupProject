@@ -644,6 +644,27 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //validate module input data
+    public boolean validateModuleData(String name){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Module.COLUMN_NAME_MODULEID,
+                UserMaster.Module.COLUMN_NAME_MODULENAME
+        };
+        String selection = UserMaster.Module.COLUMN_NAME_MODULENAME + " =? " ;
+        String args[] = {name};
+
+        Cursor cursor = db.query(UserMaster.Module.TABLE_NAME, projections, selection, args,
+                null,
+                null,
+                null,
+                null);
+        if(cursor.getCount() == 0 )
+            return true;
+        else
+            return false;
+
+    }
     //----------End of Modules Queries-------------------------------------------------
 
 

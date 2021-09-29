@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.privatetutorplanner.Database.DBHelper;
 import com.example.privatetutorplanner.ModalClasses.Module;
@@ -35,11 +36,14 @@ public class ModuleAdd extends AppCompatActivity {
             public void onClick(View v) {
 
                 String mn=et_ModuleName.getText().toString();
+             if(dbHelper.validateModuleData(mn)) {
+                 Module module = new Module(mn);
 
-                Module module=new Module(mn);
+                 dbHelper.addModule(module);
+             }else{
+                 Toast.makeText(ModuleAdd.this, "Invalid", Toast.LENGTH_SHORT).show();
 
-                dbHelper.addModule(module);
-
+             }
                 startActivity(new Intent(context,Modules_List.class));
             }
         });
