@@ -127,7 +127,7 @@
         app:srcCompat="@drawable/modulecap" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/module_assign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
@@ -135,6 +135,7 @@
         android:layout_marginEnd="134dp"
         android:layout_marginBottom="37dp"
         android:backgroundTint="@color/white"
+        android:onClick="assignNav"
         android:text="@string/btn_AssingmentsModule"
         android:textColor="@color/purple_500"
         android:textSize="20sp"

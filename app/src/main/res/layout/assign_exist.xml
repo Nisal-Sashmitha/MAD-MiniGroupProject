@@ -100,7 +100,6 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="date"
-            android:text="12/02/2021"
             android:textColor="@color/assign_main_purple"
             android:textSize="18sp"
             android:textStyle="bold" />

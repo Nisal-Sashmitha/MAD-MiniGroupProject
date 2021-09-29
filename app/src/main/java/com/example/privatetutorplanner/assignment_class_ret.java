@@ -32,6 +32,7 @@ public class assignment_class_ret extends AppCompatActivity {
     assign_childAdpt child;
     RecyclerView recyclerView;
     ImageButton navAdd;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class assignment_class_ret extends AppCompatActivity {
         details=new ArrayList<>();
         module_name = new ArrayList<>();
 
+        getIntentData();
+
         module=new ArrayList<>();
         id=new ArrayList<>();
         sorter= new HashSet<String>();
@@ -51,7 +54,7 @@ public class assignment_class_ret extends AppCompatActivity {
 
 
         try {
-            child = new assign_childAdpt(assignment_class_ret.this,this,details,"Physics");
+            child = new assign_childAdpt(assignment_class_ret.this,this,details,name);
             recyclerView.setAdapter(child);
             recyclerView.setLayoutManager(new LinearLayoutManager(assignment_class_ret.this));
         }catch(Exception e){
@@ -59,6 +62,17 @@ public class assignment_class_ret extends AppCompatActivity {
         }
 
     }
+    void getIntentData(){
+        if(getIntent().hasExtra("mod_name")){
+            //getting data
+            name = getIntent().getStringExtra("mod_name");
+            Log.i("Assignment Class Ret ",name);
+
+        }else{
+            Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     void storeModules(){
         try {
             Cursor cursor = ob.readModules();

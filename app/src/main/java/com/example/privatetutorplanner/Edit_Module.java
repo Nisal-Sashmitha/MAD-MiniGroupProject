@@ -106,6 +106,15 @@ public class Edit_Module extends AppCompatActivity {
         builder.create().show();
     }
 
+    //Assignments Navigation
+    public void assignNav(View v){
+
+        Intent i = new Intent(this, assignment_class_ret.class);
+        i.putExtra("mod_name",name);
+        startActivity(i);
+
+    }
+
 
 }
 
