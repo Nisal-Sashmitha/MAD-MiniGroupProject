@@ -61,8 +61,9 @@ public class assign_childAdpt extends RecyclerView.Adapter<assign_childAdpt.MyVi
             Log.i("Module current :",current_name);
             Log.i("Module Check current :",as3.getModulename());
             boolean val=as3.getModulename().equals(current_name);
-        if(as3.getModulename().equals(current_name)){
 
+        if(as3.getModulename().equals(current_name)){
+        //Assignment details are set according to Modules
                 holder.name.setText(as3.getTitle());
                 holder.ques.setText("Q : "+Integer.toString(as3.getQu()));
                 holder.mark.setText("M :"+Integer.toString(as3.getMark())+"%");

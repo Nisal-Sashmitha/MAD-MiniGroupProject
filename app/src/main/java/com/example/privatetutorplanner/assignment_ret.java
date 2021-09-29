@@ -198,7 +198,7 @@ public class assignment_ret extends AppCompatActivity {
 
         DetailModules();
 
-        try {
+        try { //Retieved arraylist is sent to recycle view
             adpt = new asssignment_ret_adapt1(assignment_ret.this,this, module,details);
             recyclerView.setAdapter(adpt);
             recyclerView.setLayoutManager(new LinearLayoutManager(assignment_ret.this));
@@ -206,7 +206,7 @@ public class assignment_ret extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Error assign_ret :"+e, Toast.LENGTH_LONG).show();
         }
     }
-
+    //Only Modules Columns which is stored in the Assignment DB is retrieved
     void storeModules(){
         try {
             Cursor cursor = ob.readModules();
@@ -215,19 +215,21 @@ public class assignment_ret extends AppCompatActivity {
             } else {
                 while (cursor.moveToNext()) {
                     id.add(cursor.getInt(0));
-                    module_name.add(cursor.getString(1));
+                    module_name.add(cursor.getString(1)); //Module name is assigned to Arraylist
                 }
                 for (String i : module_name) {
-                    sorter.add(i);
+                    sorter.add(i); //Using HashSet retrieved list is made unique
                 }
                 for(String j: sorter){
-                    module.add(j);
+                    module.add(j); //From HashSet to Arraylist to RecyclerView
                 }
             }
         }catch(Exception e){
             Toast.makeText(getApplicationContext(),"Error storeModules:"+e, Toast.LENGTH_LONG).show();
         }
     }
+
+    //All details of the assignment is retrieved from the DB
     void DetailModules(){
         try{
             int z=id.size();
