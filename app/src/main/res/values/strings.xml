@@ -107,5 +107,6 @@
     <string name="tv_header_MainPageDashboard">Dashboard</string>
     <string name="btnEditModule">EDIT</string>
     <string name="moduleNav_btn">Modules</string>
+    <string name="btn_AssingmentsModule">Assignments</string>
 
 </resources>

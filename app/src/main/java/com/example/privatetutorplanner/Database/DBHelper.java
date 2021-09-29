@@ -619,20 +619,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //update
-    public void updateModule(String row_id,String name){
+    public boolean updateModule(String row_id,String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(UserMaster.Module.COLUMN_NAME_MODULENAME, name);
 
         long result =db.update(UserMaster.Module.TABLE_NAME,cv, "moduleID = ?", new String[]{row_id});
         if(result == -1){
-
-            Toast.makeText(null,"Failed to Update",Toast.LENGTH_SHORT).show();
-
+            return false;
         }else{
-
-            Toast.makeText(null,"Successfully Updated",Toast.LENGTH_SHORT).show();
-
+            return true;
         }
 
     }

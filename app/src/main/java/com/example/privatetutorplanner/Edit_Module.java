@@ -1,33 +1,23 @@
 package com.example.privatetutorplanner;
 
 import android.app.AlertDialog;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TimePicker;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.privatetutorplanner.Database.DBHelper;
-import com.example.privatetutorplanner.ModalClasses.Class;
-import com.example.privatetutorplanner.ModalClasses.Module;
-
-import java.util.Arrays;
-import java.util.Calendar;
 
 public class Edit_Module extends AppCompatActivity {
 
     EditText moduleName;
-    Button btn_EditModule, btn_moduledelete;
+    ImageView btn_EditModule,btn_moduledelete;
 
     String id,name;
 
@@ -47,10 +37,15 @@ public class Edit_Module extends AppCompatActivity {
             //and then we call this
             DBHelper dbHelper = new DBHelper(Edit_Module.this);
             name = moduleName.getText().toString().trim();
-            dbHelper.updateModule(id,name);  //update method is called
+            boolean result = dbHelper.updateModule(id,name);  //update method is called
 
-            Intent intent = new Intent(Edit_Module.this , Modules_List.class);
-            startActivity(intent);
+            if(result == true){
+                Toast.makeText(Edit_Module.this,"Edited Successfully",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Edit_Module.this , Modules_List.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(Edit_Module.this,"Failed to",Toast.LENGTH_SHORT).show();
+            }
 
         });
 
