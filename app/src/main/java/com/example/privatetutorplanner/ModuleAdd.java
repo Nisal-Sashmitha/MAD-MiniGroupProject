@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,12 +37,14 @@ public class ModuleAdd extends AppCompatActivity {
             public void onClick(View v) {
 
                 String mn=et_ModuleName.getText().toString();
-             if(dbHelper.validateModuleData(mn)) {
-                 Module module = new Module(mn);
-
-                 dbHelper.addModule(module);
+             //validate inputs
+             if(TextUtils.isEmpty(et_ModuleName.getText().toString())) {
+                 Toast.makeText(ModuleAdd.this, "Empty Fields", Toast.LENGTH_SHORT).show();
              }else{
-                 Toast.makeText(ModuleAdd.this, "Invalid", Toast.LENGTH_SHORT).show();
+
+                     Module module = new Module(mn);
+
+                     dbHelper.addModule(module);
 
              }
                 startActivity(new Intent(context,Modules_List.class));

@@ -657,10 +657,11 @@ public class DBHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null);
-        if(cursor.getCount() == 0 )
-            return true;
-        else
+        if(cursor.getCount() != 0 )
             return false;
+        else
+            return true;
+
 
     }
     //----------End of Modules Queries-------------------------------------------------
