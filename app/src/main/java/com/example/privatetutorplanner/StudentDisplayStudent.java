@@ -180,6 +180,7 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
         // *******************End Of Navigation*****************//
 
 
+        // Reetrive And Display Student Details
         dbHelper = new DBHelper(this);
         Intent intent = getIntent();
         studentName = intent.getExtras().getString("studentName");
@@ -203,14 +204,12 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
     }
     //end of the on create
-    public void InitClasses(){
-
-
-        stdclasses = dbHelper.getClassesOfStudent(ID);
+    public void InitClasses(){ // initialize details for circuler view that showing class lise of student
+         stdclasses = dbHelper.getClassesOfStudent(ID);
         initRecyclerView();
 
     }
-    public void initRecyclerView(){
+    public void initRecyclerView(){ //initializing recyclerView with class details
         RecyclerView recyclerView= findViewById(R.id.student_display_classlist_recyclerView);
 
         StudentDisplayClassListRecyclerViewAdapter adapter = new StudentDisplayClassListRecyclerViewAdapter(stdclasses,this);
@@ -231,13 +230,13 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
         startActivity(intent);
     }
     public void deleteStudentPressed(View v){
-        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this) // dialog box to confirm deletion
                 .setTitle("Warning!")
                 .setMessage("Do you really want to delete this student? (this process cannot be undone)")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean flag = dbHelper.deleteStudent(ID);
+                        boolean flag = dbHelper.deleteStudent(ID);      //delete student on confirmation
                         if(flag){
                             Toast.makeText(StudentDisplayStudent.this,"Successfully Deleted!",Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
@@ -250,7 +249,7 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
 
                     }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() { //canceling delete
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(StudentDisplayStudent.this,"Deleting Canceled",Toast.LENGTH_SHORT).show();
@@ -260,13 +259,14 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
         dialog.show();
     }
     public void removeStudentPressed(int classID,String classname){
-        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this) // display dialog to confirm remove student from class
                 .setTitle("Warning!")
                 .setMessage("Do you really want remove this student from "+classname+"? (this process cannot be undone)")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean flag = dbHelper.deleteStudentClass(classID,ID);
+                        boolean flag = dbHelper.deleteStudentClass(classID,ID); // deleting on confirm
                         if(flag){
                             Toast.makeText(StudentDisplayStudent.this,"Successfully Removed!",Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
@@ -278,7 +278,7 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
 
                     }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {  //canceling delete
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(StudentDisplayStudent.this,"Removing Canceled",Toast.LENGTH_SHORT).show();
@@ -287,16 +287,12 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
                 }).create();
         dialog.show();
     }
-    public void editStudentClassPressed(StudentClass stdcls){
-
+    public void editStudentClassPressed(StudentClass stdcls){ // open popupScreen
         openEditDialog(stdcls);
         }
     public void openEditDialog(StudentClass stdcls){
         StudentUpdatePaymentNoteDialog dialog = new StudentUpdatePaymentNoteDialog(stdcls);
-
         dialog.show(getSupportFragmentManager(),"student add to class dialog");
-
-
     }
 
 
@@ -314,7 +310,7 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
     @Override
     public void updateClassDetFromDiolog(int classID, String month, double fee) {
-
+        // edit class payment Note
 
         boolean flag =dbHelper.UpdateStudentClass(ID,classID,month,fee);
         if(flag){
@@ -328,21 +324,23 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
     }
 
     @Override
-    public void applyTexts(int classID, String month, double fee) {
+    public void applyTexts(int classID, String month, double fee) { //add student to a class
         boolean alreadyInFlag=false;
         String className;
-        /**/
+
+        //check whether student is already in the selected class
         for (int i = 0; i < stdclasses.size(); i++){
             System.out.print(stdclasses.get(i) + " ");
             if(stdclasses.get(i).getClassID()==classID){
                 alreadyInFlag = true;
+                //Taste if student already in selected class
                 Toast toast = Toast.makeText(this, "Student already in "+stdclasses.get(i).getClassName(), Toast.LENGTH_SHORT);
                 toast.show();
                 break;
             }
         }
         if(!alreadyInFlag){
-
+            //add student to a class
             boolean flag = dbHelper.addStudentToAclass(ID,classID,fee,month);
             if(flag){
 
@@ -351,14 +349,10 @@ public class StudentDisplayStudent extends AppCompatActivity implements StudentA
 
                 Toast toast = Toast.makeText(StudentDisplayStudent.this, text, duration);
                 toast.show();
-                InitClasses();
-                /*Intent i= new Intent(this, StudentDisplayStudent.class);
+                InitClasses();//initialize classes list again after adding to a class
 
-                i.putExtra("studentName",studentName);
-                i.putExtra("studentID",ID);
-                startActivity(i);*/
             }else{
-
+                //falier of insertion
                 CharSequence text = "faild to insert!";
                 int duration = Toast.LENGTH_LONG;
 

@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/student_display_classes_className"
             android:layout_width="wrap_content"
-            android:layout_height="21dp"
+            android:layout_height="27dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Grade 9 science"

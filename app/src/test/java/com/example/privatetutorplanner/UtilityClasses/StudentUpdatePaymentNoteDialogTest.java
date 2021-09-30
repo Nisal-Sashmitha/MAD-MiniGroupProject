@@ -18,9 +18,20 @@ public class StudentUpdatePaymentNoteDialogTest {
         studentUpdatePaymentNoteDialog = new StudentUpdatePaymentNoteDialog(stdcls);
     }
     @Test
-    public void checkFee() {
+    public void checkFeeTest1() {
         double result = studentUpdatePaymentNoteDialog.checkFee("");
         assertEquals(0.0  ,result,0.1);
+    }
+    @Before
+    public void setUp2() throws Exception {
+        StudentClass stdcls = new StudentClass();
+
+        studentUpdatePaymentNoteDialog = new StudentUpdatePaymentNoteDialog(stdcls);
+    }
+    @Test
+    public void checkFeeTest2() {
+        double result = studentUpdatePaymentNoteDialog.checkFee("1000");
+        assertEquals(1000.0  ,result,0.1);
     }
     @After
     public void tearDown() throws Exception {

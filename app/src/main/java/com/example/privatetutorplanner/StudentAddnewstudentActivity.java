@@ -209,6 +209,7 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
         newStudentAddbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // check validations
                 if(awesomeValidation.validate() || studentValidations.phoneNoValidator(contactNo.getText().toString())){
                     Student s = new Student();
                     s.setAddress(address.getText().toString());
@@ -216,8 +217,8 @@ public class StudentAddnewstudentActivity extends AppCompatActivity {
                     s.setDateOfBirth(date.getText().toString());
                     s.setName(name.getText().toString());
 
-                    boolean flag = dbHelper.addStudent(s);
-                    if(flag){
+                    boolean flag = dbHelper.addStudent(s); // call function to send data to database
+                    if(flag){   // check success of data insertion and show necessary
                         Context context = getApplicationContext();
                         CharSequence text = "student added!";
                         int duration = Toast.LENGTH_SHORT;

@@ -115,7 +115,7 @@
             app:layout_constraintBottom_toTopOf="@+id/nav_to_classes"
             app:layout_constraintEnd_toEndOf="@+id/nav_to_classes"
             app:layout_constraintStart_toStartOf="@+id/nav_to_classes"
-            app:srcCompat="@drawable/student_floating_icon" />
+            app:srcCompat="@drawable/assignment_floating_icon" />
 
         <!--Action name text for the add alarm button-->
         <!--Make sure that you are constraining this Text to
@@ -172,7 +172,7 @@
             app:layout_constraintBottom_toTopOf="@+id/nav_to_assignment"
             app:layout_constraintEnd_toEndOf="@+id/nav_to_assignment"
             app:layout_constraintStart_toStartOf="@+id/nav_to_assignment"
-            app:srcCompat="@drawable/class_floating_icon" />
+            app:srcCompat="@drawable/lessons_floating_icon" />
 
         <!--Action name text for the add person button-->
         <!--Make sure that you are constraining this Text
@@ -182,7 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Lessons"
+            android:text="Modules"
             android:textColor="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="@+id/nav_to_lesson"
             app:layout_constraintEnd_toStartOf="@+id/nav_to_lesson"
@@ -205,7 +205,7 @@
             app:layout_constraintEnd_toStartOf="@+id/add_fab"
             app:layout_constraintTop_toTopOf="@+id/add_fab"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/student_floating_icon" />
+            app:srcCompat="@drawable/home_floating_icon" />
 
         <TextView
             android:id="@+id/nav_To_home_text"

@@ -398,7 +398,7 @@
             app:layout_constraintEnd_toStartOf="@+id/add_fab"
             app:layout_constraintTop_toTopOf="@+id/add_fab"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/student_floating_icon" />
+            app:srcCompat="@drawable/home_floating_icon" />
 
         <TextView
             android:id="@+id/nav_To_home_text"

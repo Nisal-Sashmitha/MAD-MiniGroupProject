@@ -174,10 +174,10 @@ public class StudentStudentSearch extends AppCompatActivity {
 
 
         dbHelper = new DBHelper(this);
-        InitStudents();
+        InitStudents();// Call recycler view to display all student for the first time
 
         searchText = (EditText) findViewById(R.id.student_editTextSearch_studentName);
-
+        //search students while typing
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -188,7 +188,7 @@ public class StudentStudentSearch extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 students = dbHelper.getStudentsByNameSearch(s.toString());
-                InitStudentsbySearch();
+                InitStudentsbySearch(); // call recycler view to display serched students list
 
             }
 

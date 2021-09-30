@@ -211,14 +211,15 @@ public class StudentEditStudentForm extends AppCompatActivity {
 
 
     public void editStudentSubmitPressed(View v){
-        if(awesomeValidation.validate()){
-            instudentName = name.getText().toString();
+        if(awesomeValidation.validate()){ //check whether validation are passed
+            instudentName = name.getText().toString();// get data from fields
             inDOB = bDate.getText().toString();
             inaddress = address.getText().toString();
             incontactNo = contactNo.getText().toString();
 
+            //edit details on database
             boolean flag =dbHelper.UpdateStudent(ID,instudentName,inDOB,inaddress,incontactNo);
-            if(flag){
+            if(flag){// check success of editing
                 Context context = getApplicationContext();
                 CharSequence text = "Updated!";
                 int duration = Toast.LENGTH_SHORT;
@@ -238,10 +239,6 @@ public class StudentEditStudentForm extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
-        }else{
-
         }
-
-
     }
 }

@@ -16,14 +16,16 @@ import static org.junit.Assert.*;
 public class StudentAddnewstudentActivityTest {
 
     @Rule
-    public ActivityTestRule<StudentAddnewstudentActivity> StudentAddnewstudentActivityTestRule = new ActivityTestRule<StudentAddnewstudentActivity>(StudentAddnewstudentActivity.class);
+    public ActivityTestRule<StudentAddnewstudentActivity> StudentAddnewstudentActivityTestRule =
+            new ActivityTestRule<StudentAddnewstudentActivity>(StudentAddnewstudentActivity.class);
     private StudentAddnewstudentActivity studentAddnewstudentActivity = null;
     @Before
     public void setUp() throws Exception {
         studentAddnewstudentActivity = StudentAddnewstudentActivityTestRule.getActivity();
     }
     @Test
-    public void validationTest(){
+    public void validationTest(){/* check whether first loading page of
+                                 student which is searchStudent page loading properly*/
         View view = studentAddnewstudentActivity.findViewById(R.id.studnt_main_title1);
         assertNotNull(view);
     }

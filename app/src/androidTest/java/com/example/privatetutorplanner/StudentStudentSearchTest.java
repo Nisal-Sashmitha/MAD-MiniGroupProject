@@ -4,7 +4,6 @@ import android.view.View;
 
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.privatetutorplanner.Database.DBHelper;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +14,8 @@ import static org.junit.Assert.*;
 
 public class StudentStudentSearchTest {
     @Rule
-    public ActivityTestRule<StudentStudentSearch> mActivityTestRule = new ActivityTestRule<StudentStudentSearch>(StudentStudentSearch.class);
+    public ActivityTestRule<StudentStudentSearch> mActivityTestRule =
+            new ActivityTestRule<StudentStudentSearch>(StudentStudentSearch.class);
     private StudentStudentSearch mActivity = null;
 
     @Before
