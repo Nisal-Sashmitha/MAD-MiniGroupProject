@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +19,17 @@ import com.example.privatetutorplanner.Database.DBHelper;
 import com.example.privatetutorplanner.ModalClasses.Assignment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class Assignment_add extends AppCompatActivity {
     Button addbtn;
     EditText title,modname, qu, mark, date;
     boolean ans= false;
     Context c;
+    Spinner module;
 
     DBHelper ob;
+    ArrayList<String> getmodule;
 
     TextView navToStudentText, navToClassesText, navToAssignmentText, navToLessonsText ,navToHomeText;
     Boolean isAllFabsVisible;
@@ -170,13 +178,16 @@ public class Assignment_add extends AppCompatActivity {
 
 
 
-
+        getmodule=new ArrayList<>();
         ob=new DBHelper(this);
+        readModules();
         title =  findViewById(R.id.assign_etTitle2);
-        modname =  findViewById(R.id.assign_etModName2);
+        module=findViewById(R.id.assign_ModSpin);
         qu =findViewById(R.id.assign_etQ2);
         mark =  findViewById(R.id.assign_etMark2);
         date = findViewById(R.id.assign_Date2);
+
+        module.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,getmodule));
         addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,29 +196,53 @@ public class Assignment_add extends AppCompatActivity {
             }
         });
     }
+
+    void readModules(){
+        try{
+            Cursor m1= ob.readAllModuleData();
+            if (m1.getCount() == 0) {
+                Toast.makeText(this, "No modules to show", Toast.LENGTH_LONG).show();
+            }else{
+                while (m1.moveToNext()) {
+                    //Module name is assigned to Arraylist
+                    getmodule.add(m1.getString(1));
+                }
+            }
+
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(),"Error addModules:"+e, Toast.LENGTH_LONG).show();
+        }
+    }
     @Override
     protected void onResume() {
         super.onResume();
 
     }
 
+
+
     public void Nav(){
         Intent intent = new Intent(this,assignment_ret.class);
         startActivity(intent);
     }
     void validate(){
-        int qval=Integer.parseInt(qu.getText().toString());
-        int m=Integer.parseInt(mark.getText().toString());
+       // int qval=Integer.parseInt(qu.getText().toString());
+        //int m=Integer.parseInt(mark.getText().toString());
 
-        if(qval<=0 || qval>=50){
+        if(title.getText().toString().trim().length()==0 || module.getSelectedItem().toString().trim().length()==0 ||
+               qu.getText().toString().trim().length()==0 || mark.getText().toString().trim().length()==0 ||
+                date.getText().toString().trim().length()==0 ){
+            Toast.makeText(getApplicationContext(), "Some fields are empty", Toast.LENGTH_LONG).show();
+        }
+        else if(Integer.parseInt(qu.getText().toString())<=0 || Integer.parseInt(qu.getText().toString())>=50){
             Toast.makeText(getApplicationContext(), "Question field not in range 0 to 50", Toast.LENGTH_LONG).show();
         }
-        else if(m>100 || m<=0){
+        else if(Integer.parseInt(mark.getText().toString())>100 || Integer.parseInt(mark.getText().toString())<=0){
             Toast.makeText(getApplicationContext(), "Marks field is not a percentage", Toast.LENGTH_LONG).show();
         }
         else{
             Assignment assign=new Assignment(title.getText().toString(),
-                    modname.getText().toString(),
+                    module.getSelectedItem().toString(),
                     Integer.parseInt(qu.getText().toString()),
                     Integer.parseInt(mark.getText().toString()),
                     date.getText().toString());
@@ -227,4 +262,5 @@ public class Assignment_add extends AppCompatActivity {
 
         }
     }
+
 }

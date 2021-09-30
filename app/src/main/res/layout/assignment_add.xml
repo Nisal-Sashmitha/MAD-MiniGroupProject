@@ -143,24 +143,23 @@
         app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assign_tv3" />
-
-    <EditText
-        android:id="@+id/assign_etModName2"
+    <Spinner
+        android:id="@+id/assign_ModSpin"
         android:layout_width="204dp"
         android:layout_height="49dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/assign_in_bg"
         android:ems="10"
-        android:hint="@string/assign_mod_name"
-        android:inputType="textPersonName"
-        android:paddingLeft="30dp"
+        android:gravity="center"
         android:textColor="@color/black"
-        android:textColorHint="@color/purple_500"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toStartOf="@+id/assign_tv4"
-        app:layout_constraintTop_toBottomOf="@+id/assign_tv4" />
+        app:layout_constraintTop_toBottomOf="@+id/assign_tv4"/>
+
 
     <EditText
         android:id="@+id/assign_etMark2"

@@ -1,41 +1,27 @@
 package com.example.privatetutorplanner;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Dialog;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.privatetutorplanner.Database.DBHelper;
-import com.example.privatetutorplanner.ModalClasses.Assignment;
-import com.example.privatetutorplanner.UtilityClasses.Assignment.Assign_PopBtn;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+public class Edit_Module extends AppCompatActivity {
 
-public class assignment_ret extends AppCompatActivity {
+    EditText moduleName;
+    ImageView btn_EditModule,btn_moduledelete;
 
-
-    DBHelper ob;
-    ArrayList<String> module_name;
-    ArrayList<Integer> id;
-    ArrayList<String> module;
-    ArrayList<Assignment> details;
-
-    HashSet<String> sorter ;
-    asssignment_ret_adapt1 adpt;
-    RecyclerView recyclerView;
-    ImageView navAdd;
-    Dialog btnDialog;
+    String id,name;
 
     TextView navToStudentText, navToClassesText, navToAssignmentText, navToLessonsText ,navToHomeText;
     Boolean isAllFabsVisible;
@@ -45,7 +31,7 @@ public class assignment_ret extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignment_ret);
+        setContentView(R.layout.activity_edit_module);
         getSupportActionBar().hide();
 
 
@@ -143,7 +129,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this,ClassDashboard.class);
+                        Intent intent = new Intent(Edit_Module.this,ClassDashboard.class);
                         startActivity(intent);
                     }
                 });
@@ -153,7 +139,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i= new Intent(assignment_ret.this,StudentStudentSearch.class);
+                        Intent i= new Intent(Edit_Module.this,StudentStudentSearch.class);
                         startActivity(i);
                     }
                 });
@@ -161,7 +147,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this, assignment_ret.class);
+                        Intent intent = new Intent(Edit_Module.this, assignment_ret.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
@@ -171,87 +157,117 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        Intent intent = new Intent(assignment_ret.this, MainPage.class);
+                        Intent intent = new Intent(Edit_Module.this, MainPage.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
                 });
 
+        navToLessonsFab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Edit_Module.this, Modules_List.class);
+                        // Intent intent = new Intent(this, assignment_class_ret.class);
+                        startActivity(intent);
+                    }
+                });
+
+
         // *******************End Of Navigation*****************//
 
 
+        moduleName = findViewById(R.id.et_EditModuleName);
+        btn_EditModule = findViewById(R.id.btn_EditModule);
+        btn_moduledelete = findViewById(R.id.btn_moduledelete);
 
+        //first we call this
+        getAndSetIntentData();
 
-        recyclerView= findViewById(R.id.recycle_assign1);
-        ob= new DBHelper(this);
-        module_name = new ArrayList<>();
-        details=new ArrayList<>();
-        module=new ArrayList<>();
-        id=new ArrayList<>();
-        sorter= new HashSet<String>();
+        btn_EditModule.setOnClickListener((view) -> {
+            //and then we call this
+            DBHelper dbHelper = new DBHelper(Edit_Module.this);
+            name = moduleName.getText().toString().trim();
+            boolean result = dbHelper.updateModule(id,name);  //update method is called
 
-        btnDialog =new Dialog(this);
-
-
-        storeModules();
-
-        DetailModules();
-
-        try { //Retieved arraylist is sent to recycle view
-            adpt = new asssignment_ret_adapt1(assignment_ret.this,this, module,details);
-            recyclerView.setAdapter(adpt);
-            recyclerView.setLayoutManager(new LinearLayoutManager(assignment_ret.this));
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error assign_ret :"+e, Toast.LENGTH_LONG).show();
-        }
-    }
-    //Only Modules Columns which is stored in the Assignment DB is retrieved
-    void storeModules(){
-        try {
-            Cursor cursor = ob.readModules();
-            if (cursor.getCount() == 0) {
-                Toast.makeText(this, "No assignments to show", Toast.LENGTH_LONG).show();
-            } else {
-                while (cursor.moveToNext()) {
-                    id.add(cursor.getInt(0));
-                    module_name.add(cursor.getString(1)); //Module name is assigned to Arraylist
-                }
-                for (String i : module_name) {
-                    sorter.add(i); //Using HashSet retrieved list is made unique
-                }
-                for(String j: sorter){
-                    module.add(j); //From HashSet to Arraylist to RecyclerView
-                }
+            if(result == true){
+                Toast.makeText(Edit_Module.this,"Edited Successfully",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Edit_Module.this , Modules_List.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(Edit_Module.this,"Failed to",Toast.LENGTH_SHORT).show();
             }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error storeModules:"+e, Toast.LENGTH_LONG).show();
-        }
-    }
 
-    //All details of the assignment is retrieved from the DB
-    void DetailModules(){
-        try{
-            int z=id.size();
-            for(int i=0;i<z;i++ ) {
-                Assignment result = ob.getDetModules(id.get(i));
-                details.add(result);
-                Log.v("key:", result.getDate());
-                Log.v("key:", Integer.toString(result.getMark()));
-                Log.v("key:", result.getModulename());
+        });
+
+        btn_moduledelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog();
             }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error  DetailModules:"+e, Toast.LENGTH_LONG).show();
+        });
+
+    }
+
+    //get intent data
+    void getAndSetIntentData(){
+        if(getIntent().hasExtra("id") && getIntent().hasExtra("name")){
+            //getting data
+              id = getIntent().getStringExtra("id");
+              name = getIntent().getStringExtra("name");
+
+            //setting data
+            moduleName.setText(name);
+            Log.d("stev",name);
+
+        }else{
+            Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void nav(View view){
-       /* Intent intent = new Intent(this, Assignment_add.class);
-        startActivity(intent);*/
+    //delete confirmation dialog box
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete" + name +"?");
+        builder.setMessage("Are you sure you want to delete ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
 
-        Assign_PopBtn pop= new Assign_PopBtn();
-       pop.show(getSupportFragmentManager(), "example dialog");
+            public void onClick(DialogInterface dialog, int i) {
 
+                DBHelper dbHelper = new DBHelper(Edit_Module.this);
+                boolean result = dbHelper.deleteOneRowModule(id);
+                if(result == true){
+                    Toast.makeText(Edit_Module.this,"Successfully Deleted",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Edit_Module.this , Modules_List.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(Edit_Module.this,"Deletion failed",Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+
+            }
+        });
+        builder.create().show();
+    }
+
+    //Assignments Navigation
+    public void assignNav(View v){
+
+        Intent i = new Intent(this, assignment_class_ret.class);
+        i.putExtra("mod_name",name);
+        startActivity(i);
 
     }
+
+
 }
+
+
+

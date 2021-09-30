@@ -1,41 +1,35 @@
 package com.example.privatetutorplanner;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.privatetutorplanner.Database.DBHelper;
-import com.example.privatetutorplanner.ModalClasses.Assignment;
-import com.example.privatetutorplanner.UtilityClasses.Assignment.Assign_PopBtn;
+import com.example.privatetutorplanner.UtilityClasses.ModuleAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
-public class assignment_ret extends AppCompatActivity {
+public class Modules_List extends AppCompatActivity {
 
+   private ImageView iv_addmodule;
+   Context context;
 
-    DBHelper ob;
-    ArrayList<String> module_name;
-    ArrayList<Integer> id;
-    ArrayList<String> module;
-    ArrayList<Assignment> details;
-
-    HashSet<String> sorter ;
-    asssignment_ret_adapt1 adpt;
-    RecyclerView recyclerView;
-    ImageView navAdd;
-    Dialog btnDialog;
+   DBHelper dbHelper;
+   RecyclerView moduleRecyclerView;
+   ArrayList<String> moduleID , moduleName ;
+   ModuleAdapter moduleAdapter;
 
     TextView navToStudentText, navToClassesText, navToAssignmentText, navToLessonsText ,navToHomeText;
     Boolean isAllFabsVisible;
@@ -45,7 +39,7 @@ public class assignment_ret extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignment_ret);
+        setContentView(R.layout.activity_modules_list);
         getSupportActionBar().hide();
 
 
@@ -143,7 +137,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this,ClassDashboard.class);
+                        Intent intent = new Intent(Modules_List.this,ClassDashboard.class);
                         startActivity(intent);
                     }
                 });
@@ -153,7 +147,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i= new Intent(assignment_ret.this,StudentStudentSearch.class);
+                        Intent i= new Intent(Modules_List.this,StudentStudentSearch.class);
                         startActivity(i);
                     }
                 });
@@ -161,7 +155,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this, assignment_ret.class);
+                        Intent intent = new Intent(Modules_List.this, assignment_ret.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
@@ -171,87 +165,67 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        Intent intent = new Intent(assignment_ret.this, MainPage.class);
+                        Intent intent = new Intent(Modules_List.this, MainPage.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
                 });
 
+        navToLessonsFab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Modules_List.this, Modules_List.class);
+                        // Intent intent = new Intent(this, assignment_class_ret.class);
+                        startActivity(intent);
+                    }
+                });
+
+
         // *******************End Of Navigation*****************//
 
 
+        moduleRecyclerView = findViewById(R.id.moduleRecyclerView);
+        iv_addmodule = findViewById(R.id.iv_addmodule);
+        context = this;
 
-
-        recyclerView= findViewById(R.id.recycle_assign1);
-        ob= new DBHelper(this);
-        module_name = new ArrayList<>();
-        details=new ArrayList<>();
-        module=new ArrayList<>();
-        id=new ArrayList<>();
-        sorter= new HashSet<String>();
-
-        btnDialog =new Dialog(this);
-
-
-        storeModules();
-
-        DetailModules();
-
-        try { //Retieved arraylist is sent to recycle view
-            adpt = new asssignment_ret_adapt1(assignment_ret.this,this, module,details);
-            recyclerView.setAdapter(adpt);
-            recyclerView.setLayoutManager(new LinearLayoutManager(assignment_ret.this));
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error assign_ret :"+e, Toast.LENGTH_LONG).show();
-        }
-    }
-    //Only Modules Columns which is stored in the Assignment DB is retrieved
-    void storeModules(){
-        try {
-            Cursor cursor = ob.readModules();
-            if (cursor.getCount() == 0) {
-                Toast.makeText(this, "No assignments to show", Toast.LENGTH_LONG).show();
-            } else {
-                while (cursor.moveToNext()) {
-                    id.add(cursor.getInt(0));
-                    module_name.add(cursor.getString(1)); //Module name is assigned to Arraylist
-                }
-                for (String i : module_name) {
-                    sorter.add(i); //Using HashSet retrieved list is made unique
-                }
-                for(String j: sorter){
-                    module.add(j); //From HashSet to Arraylist to RecyclerView
-                }
+        //navigate to add modules activity using intent
+        iv_addmodule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context,ModuleAdd.class));
             }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error storeModules:"+e, Toast.LENGTH_LONG).show();
+        });
+
+        dbHelper = new DBHelper(Modules_List.this);
+        moduleID = new ArrayList<>();
+        moduleName = new ArrayList<>();
+
+        storeDataInArrays();
+        moduleAdapter = new ModuleAdapter(Modules_List.this,this,moduleID,moduleName);
+        moduleRecyclerView.setAdapter( moduleAdapter);
+        moduleRecyclerView.setLayoutManager(new LinearLayoutManager(Modules_List.this));
+
+    }
+    //overide method
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            recreate();
         }
     }
 
-    //All details of the assignment is retrieved from the DB
-    void DetailModules(){
-        try{
-            int z=id.size();
-            for(int i=0;i<z;i++ ) {
-                Assignment result = ob.getDetModules(id.get(i));
-                details.add(result);
-                Log.v("key:", result.getDate());
-                Log.v("key:", Integer.toString(result.getMark()));
-                Log.v("key:", result.getModulename());
+    void storeDataInArrays() {
+        Cursor cursor = dbHelper.readAllModuleData();
+        if(cursor.getCount() == 0){
+            Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
+        }else{
+            while(cursor.moveToNext()){
+                moduleID.add(cursor.getString(0));
+                moduleName.add(cursor.getString(1));
             }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error  DetailModules:"+e, Toast.LENGTH_LONG).show();
         }
-    }
-
-    public void nav(View view){
-       /* Intent intent = new Intent(this, Assignment_add.class);
-        startActivity(intent);*/
-
-        Assign_PopBtn pop= new Assign_PopBtn();
-       pop.show(getSupportFragmentManager(), "example dialog");
-
 
     }
 }

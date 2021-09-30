@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/modulebg"
+    tools:context=".Edit_Module">
+
+     <!--nav buttons ************************************-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--Floating action button for add alarm-->
+        <!--Make sure that you are constraining this
+            button to the parent button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_to_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@+id/add_fab"
+            app:layout_constraintEnd_toEndOf="@+id/add_fab"
+            app:layout_constraintStart_toStartOf="@+id/add_fab"
+            app:srcCompat="@drawable/student_floating_icon" />
+
+        <!--Action name text for the add alarm button-->
+        <!--Make sure that you are constraining this Text to
+            the add Alarm FAB button-->
+        <TextView
+            android:id="@+id/nav_to_student_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Students"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_to_student"
+            app:layout_constraintEnd_toStartOf="@+id/nav_to_student"
+            app:layout_constraintTop_toTopOf="@+id/nav_to_student" />
+
+        <!--Floating action button for add alarm-->
+        <!--Make sure that you are constraining this
+            button to the parent button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_to_assignment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@+id/nav_to_classes"
+            app:layout_constraintEnd_toEndOf="@+id/nav_to_classes"
+            app:layout_constraintStart_toStartOf="@+id/nav_to_classes"
+            app:srcCompat="@drawable/assignment_floating_icon" />
+
+        <!--Action name text for the add alarm button-->
+        <!--Make sure that you are constraining this Text to
+            the add Alarm FAB button-->
+        <TextView
+            android:id="@+id/nav_to_assignment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Assignments"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_to_assignment"
+            app:layout_constraintEnd_toStartOf="@+id/nav_to_assignment"
+            app:layout_constraintTop_toTopOf="@+id/nav_to_assignment" />
+
+        <!--Floating action button for add person-->
+        <!--Make sure that you are constraining this
+            button to the add Alarm FAB button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_to_classes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@+id/nav_to_student"
+            app:layout_constraintEnd_toEndOf="@+id/nav_to_student"
+            app:layout_constraintStart_toStartOf="@+id/nav_to_student"
+            app:srcCompat="@drawable/class_floating_icon" />
+
+        <!--Action name text for the add person button-->
+        <!--Make sure that you are constraining this Text
+            to the add Person FAB button-->
+        <TextView
+            android:id="@+id/nav_to_classes_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="classes"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_to_classes"
+            app:layout_constraintEnd_toStartOf="@+id/nav_to_classes"
+            app:layout_constraintTop_toTopOf="@+id/nav_to_classes" />
+
+
+        <!--Floating action button for add person-->
+        <!--Make sure that you are constraining this
+            button to the add Alarm FAB button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_to_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@+id/nav_to_assignment"
+            app:layout_constraintEnd_toEndOf="@+id/nav_to_assignment"
+            app:layout_constraintStart_toStartOf="@+id/nav_to_assignment"
+            app:srcCompat="@drawable/lessons_floating_icon" />
+
+        <!--Action name text for the add person button-->
+        <!--Make sure that you are constraining this Text
+            to the add Person FAB button-->
+        <TextView
+            android:id="@+id/nav_to_lesson_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Module"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_to_lesson"
+            app:layout_constraintEnd_toStartOf="@+id/nav_to_lesson"
+            app:layout_constraintTop_toTopOf="@+id/nav_to_lesson" />
+        <!--Floating action button for add alarm-->
+        <!--Make sure that you are constraining this
+            button to the parent button-->
+
+        <!--Action name text for the add alarm button-->
+        <!--Make sure that you are constraining this Text to
+            the add Alarm FAB button-->
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_To_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+            app:layout_constraintEnd_toStartOf="@+id/add_fab"
+            app:layout_constraintTop_toTopOf="@+id/add_fab"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/student_floating_icon" />
+
+        <TextView
+            android:id="@+id/nav_To_home_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Home"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_To_home"
+            app:layout_constraintEnd_toStartOf="@+id/nav_To_home"
+            app:layout_constraintTop_toTopOf="@+id/nav_To_home" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="406dp"
+        android:layout_height="360dp"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/modulelayout_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_EditModule"
+            android:layout_width="125dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="141dp"
+            android:layout_marginBottom="34dp"
+            android:text="@string/topicmoduleedit1"
+            android:textColor="@color/purple_500"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_EditModuleName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_EditModuleName"
+            android:layout_width="236dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/tv_ModuleName"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_EditModuleName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/et_EditModuleName"
+            android:layout_width="237dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="84dp"
+            android:background="@drawable/moduleinputfields"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="16dp"
+            android:paddingTop="4dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="4dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_EditModuleName" />
+
+        <ImageView
+            android:id="@+id/btn_moduledelete"
+            android:layout_width="77dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginBottom="49dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_EditModuleName"
+            app:srcCompat="@drawable/assign_delete" />
+
+        <ImageView
+            android:id="@+id/btn_EditModule"
+            android:layout_width="62dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="98dp"
+            android:layout_marginBottom="51dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_moduledelete"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_EditModuleName"
+            app:srcCompat="@drawable/assign_ic_baseline_edit_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_ModuleTopic2"
+        android:layout_width="181dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/topicmoduleedit"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/modulecap" />
+
+    <Button
+        android:id="@+id/module_assign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="37dp"
+        android:backgroundTint="@color/white"
+        android:onClick="assignNav"
+        android:text="@string/btn_AssingmentsModule"
+        android:textColor="@color/purple_500"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

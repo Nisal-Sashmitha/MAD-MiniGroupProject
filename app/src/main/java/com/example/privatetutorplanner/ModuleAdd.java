@@ -1,51 +1,38 @@
 package com.example.privatetutorplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.privatetutorplanner.Database.DBHelper;
-import com.example.privatetutorplanner.ModalClasses.Assignment;
-import com.example.privatetutorplanner.UtilityClasses.Assignment.Assign_PopBtn;
+import com.example.privatetutorplanner.ModalClasses.Module;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+public class ModuleAdd extends AppCompatActivity {
 
-public class assignment_ret extends AppCompatActivity {
-
-
-    DBHelper ob;
-    ArrayList<String> module_name;
-    ArrayList<Integer> id;
-    ArrayList<String> module;
-    ArrayList<Assignment> details;
-
-    HashSet<String> sorter ;
-    asssignment_ret_adapt1 adpt;
-    RecyclerView recyclerView;
-    ImageView navAdd;
-    Dialog btnDialog;
+    Button btnModuleAdd;
+    DBHelper dbHelper;
+    EditText et_ModuleName;
+    private Context context;
 
     TextView navToStudentText, navToClassesText, navToAssignmentText, navToLessonsText ,navToHomeText;
     Boolean isAllFabsVisible;
     FloatingActionButton mAddFab, navToStudentFab, navtToClassesFab, navToAssignmentFab ,navToLessonsFab, navToHomeFab ;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignment_ret);
+        setContentView(R.layout.activity_module_add);
         getSupportActionBar().hide();
 
 
@@ -143,7 +130,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this,ClassDashboard.class);
+                        Intent intent = new Intent(ModuleAdd.this,ClassDashboard.class);
                         startActivity(intent);
                     }
                 });
@@ -153,7 +140,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i= new Intent(assignment_ret.this,StudentStudentSearch.class);
+                        Intent i= new Intent(ModuleAdd.this,StudentStudentSearch.class);
                         startActivity(i);
                     }
                 });
@@ -161,7 +148,7 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(assignment_ret.this, assignment_ret.class);
+                        Intent intent = new Intent(ModuleAdd.this, assignment_ret.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
@@ -171,87 +158,52 @@ public class assignment_ret extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        Intent intent = new Intent(assignment_ret.this, MainPage.class);
+                        Intent intent = new Intent(ModuleAdd.this, MainPage.class);
                         // Intent intent = new Intent(this, assignment_class_ret.class);
                         startActivity(intent);
                     }
                 });
 
+        navToLessonsFab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ModuleAdd.this, Modules_List.class);
+                        // Intent intent = new Intent(this, assignment_class_ret.class);
+                        startActivity(intent);
+                    }
+                });
+
+
         // *******************End Of Navigation*****************//
 
 
 
+        context = this;
+        dbHelper=new DBHelper(context);
 
-        recyclerView= findViewById(R.id.recycle_assign1);
-        ob= new DBHelper(this);
-        module_name = new ArrayList<>();
-        details=new ArrayList<>();
-        module=new ArrayList<>();
-        id=new ArrayList<>();
-        sorter= new HashSet<String>();
-
-        btnDialog =new Dialog(this);
+        //map button and text
+        btnModuleAdd = findViewById(R.id.btn_AddModule);
+        et_ModuleName = findViewById(R.id.et_ModuleName);
 
 
-        storeModules();
+        btnModuleAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        DetailModules();
+                String mn=et_ModuleName.getText().toString();
+             //validate inputs
+             if(TextUtils.isEmpty(et_ModuleName.getText().toString())) {
+                 Toast.makeText(ModuleAdd.this, "Empty Fields", Toast.LENGTH_SHORT).show();
+             }else{
 
-        try { //Retieved arraylist is sent to recycle view
-            adpt = new asssignment_ret_adapt1(assignment_ret.this,this, module,details);
-            recyclerView.setAdapter(adpt);
-            recyclerView.setLayoutManager(new LinearLayoutManager(assignment_ret.this));
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error assign_ret :"+e, Toast.LENGTH_LONG).show();
-        }
-    }
-    //Only Modules Columns which is stored in the Assignment DB is retrieved
-    void storeModules(){
-        try {
-            Cursor cursor = ob.readModules();
-            if (cursor.getCount() == 0) {
-                Toast.makeText(this, "No assignments to show", Toast.LENGTH_LONG).show();
-            } else {
-                while (cursor.moveToNext()) {
-                    id.add(cursor.getInt(0));
-                    module_name.add(cursor.getString(1)); //Module name is assigned to Arraylist
-                }
-                for (String i : module_name) {
-                    sorter.add(i); //Using HashSet retrieved list is made unique
-                }
-                for(String j: sorter){
-                    module.add(j); //From HashSet to Arraylist to RecyclerView
-                }
+                     Module module = new Module(mn);
+
+                     dbHelper.addModule(module);
+
+             }
+                startActivity(new Intent(context,Modules_List.class));
             }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error storeModules:"+e, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    //All details of the assignment is retrieved from the DB
-    void DetailModules(){
-        try{
-            int z=id.size();
-            for(int i=0;i<z;i++ ) {
-                Assignment result = ob.getDetModules(id.get(i));
-                details.add(result);
-                Log.v("key:", result.getDate());
-                Log.v("key:", Integer.toString(result.getMark()));
-                Log.v("key:", result.getModulename());
-            }
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Error  DetailModules:"+e, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void nav(View view){
-       /* Intent intent = new Intent(this, Assignment_add.class);
-        startActivity(intent);*/
-
-        Assign_PopBtn pop= new Assign_PopBtn();
-       pop.show(getSupportFragmentManager(), "example dialog");
-
-
+        });
     }
 }

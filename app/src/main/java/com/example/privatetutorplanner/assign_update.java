@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.privatetutorplanner.Database.DBHelper;
-import com.example.privatetutorplanner.ModalClasses.Assignment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class assign_update extends AppCompatActivity {
@@ -170,7 +169,7 @@ public class assign_update extends AppCompatActivity {
 
 
         title=findViewById(R.id.assign_etTitle2);
-        module=findViewById(R.id.assign_etModName2);
+        module=findViewById(R.id.assign_ModSpin);
         qu=findViewById(R.id.assign_etQ2);
         mark=findViewById(R.id.assign_etMark2);
         date=findViewById(R.id.assign_Date2);
@@ -214,13 +213,17 @@ public class assign_update extends AppCompatActivity {
         }
     }
     void validate(){
-        int qval=Integer.parseInt(qu.getText().toString().trim());
-        int m=Integer.parseInt(mark.getText().toString().trim());
-
-        if(qval<=0 || qval>=50){
+        //int qval=Integer.parseInt(qu.getText().toString().trim());
+        //int m=Integer.parseInt(mark.getText().toString().trim());
+        if(title.getText().toString().trim().length()==0 || module.getText().toString().trim().length()==0 ||
+                qu.getText().toString().trim().length()==0 || mark.getText().toString().trim().length()==0 ||
+                date.getText().toString().trim().length()==0 ){
+            Toast.makeText(getApplicationContext(), "Some fields are empty", Toast.LENGTH_LONG).show();
+        }
+        else if(Integer.parseInt(qu.getText().toString().trim())<=0 || Integer.parseInt(qu.getText().toString().trim())>=50){
             Toast.makeText(getApplicationContext(), "Question field not in range 0 to 50", Toast.LENGTH_LONG).show();
         }
-        else if(m>100 || m<=0){
+        else if(Integer.parseInt(mark.getText().toString().trim())>100 || Integer.parseInt(mark.getText().toString().trim())<=0){
             Toast.makeText(getApplicationContext(), "Marks field is not in a percentage range", Toast.LENGTH_LONG).show();
         }
         else{

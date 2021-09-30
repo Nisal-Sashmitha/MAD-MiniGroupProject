@@ -2,6 +2,7 @@ package com.example.privatetutorplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,7 @@ public class Assignment_Exist extends AppCompatActivity {
         assign_mod=new ArrayList<>();
         ob= new DBHelper(this);
         AddTitles();
+        readModules();
 
 
         title.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,assign_title));
@@ -56,7 +58,7 @@ public class Assignment_Exist extends AppCompatActivity {
                 newas1=ob.getAssignment(ti);
 
                 if(newas1.getModulename().equals(mod_title)){
-                    Toast.makeText(getApplicationContext(), "Module name already exists in the db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Assignment already exists on this module", Toast.LENGTH_LONG).show();
                 }
                 else{
                     Assignment asNew= new Assignment(ti,mod_title,newas1.getQu(),newas1.getMark(),newas1.getDate());
@@ -64,6 +66,8 @@ public class Assignment_Exist extends AppCompatActivity {
                     ans=ob.addAssign(asNew);
                     if (ans == true) {
                         Toast.makeText(getApplicationContext(), "Data Succesfully added", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Assignment_Exist.this,assignment_ret.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Data Not inserted", Toast.LENGTH_LONG).show();
                     }
@@ -86,6 +90,22 @@ public class Assignment_Exist extends AppCompatActivity {
             }
         }catch(Exception e){
             Toast.makeText(getApplicationContext(),"Error storeModules in existform:"+e, Toast.LENGTH_LONG).show();
+        }
+    }
+    void readModules(){
+        try{
+            Cursor m1= ob.readAllModuleData();
+            if (m1.getCount() == 0) {
+                Toast.makeText(this, "No modules to show", Toast.LENGTH_LONG).show();
+            }else{
+                while (m1.moveToNext()) {
+                    //Module name is assigned to Arraylist
+                    assign_mod.add(m1.getString(1));
+                }
+            }
+
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(),"Error existModules:"+e, Toast.LENGTH_LONG).show();
         }
     }
 }

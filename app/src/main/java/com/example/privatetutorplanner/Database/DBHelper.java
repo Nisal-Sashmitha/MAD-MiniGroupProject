@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 //import com.example.privatetutorplanner.ModalClasses.Module;
+import com.example.privatetutorplanner.ModalClasses.Module;
 import com.example.privatetutorplanner.ModalClasses.Student;
 
 import java.util.ArrayList;
@@ -72,10 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String SQL_CREATE_MODULES=
                 "CREATE TABLE "+UserMaster.Module.TABLE_NAME+"("+
                         UserMaster.Module.COLUMN_NAME_MODULEID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL,"+
-                        UserMaster.Module.COLUMN_NAME_CLASSID+" INTEGER,"+
-                        "FOREIGN KEY ("+UserMaster.Module.COLUMN_NAME_CLASSID+
-                        ") REFERENCES "+UserMaster.Class.TABLE_NAME+" ("+UserMaster.Class.COLUMN_NAME_CLASSID+")ON DELETE CASCADE)";
+                        UserMaster.Module.COLUMN_NAME_MODULENAME+" TEXT NOT NULL)";
 
         db.execSQL(SQL_CREATE_MODULES);
 
@@ -326,29 +324,24 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //Read specific module names
-
+    //Read Assignment details for  module names
     public Assignment getDetModules(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        //String modquery = "SELECT * FROM Assignment WHERE Module_Name = '" +module+ "'";
-       // String modquery = "select * from " + UserMaster.Assignment.TABLE_NAME + " where " + UserMaster.Assignment.COLUMN_NAME_MODULENAME + "='" + module + "'";
-        //db.rawQuery(modquery, null); db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
         String selection = UserMaster.Assignment.COLUMN_NAME_ASSIGNID + "=?";
         String[] selectionArgs = {Integer.toString(id)};
         Assignment as2= null;
         try {
             Cursor cursor = db.query(UserMaster.Assignment.TABLE_NAME, null, selection, selectionArgs, null, null, null);
 
-                    if (db != null){
-                        cursor.moveToFirst();
+            if (db != null){
+                cursor.moveToFirst();
+                 as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
+                         cursor.getString(2),
+                         Integer.parseInt(cursor.getString(3)),
+                         Integer.parseInt(cursor.getString(4)),
+                         cursor.getString(5));
 
-                                as2 = new Assignment(Integer.parseInt(cursor.getString(0)),cursor.getString(1),
-                                        cursor.getString(2),
-                                        Integer.parseInt(cursor.getString(3)),
-                                        Integer.parseInt(cursor.getString(4)),
-                                        cursor.getString(5));
-
-                    }
+            }
         }
         catch(Exception E){
             Log.i("Error",E.getMessage());
@@ -358,18 +351,21 @@ public class DBHelper extends SQLiteOpenHelper {
         // return assignment
         return as2;
     }
+
     //Delete One Row
     public void deleteAssign(int row){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(UserMaster.Assignment.TABLE_NAME, " ID = ?", new String[]{Integer.toString(row)});
         if(result == -1){
             Log.i("Error","Data did not deleted");
-           // Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+
         }else{
             Log.i("Error","Data deleted successfully");
-           // Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+
         }
     }
+    
+
     public void updateAssign(String row_id, String title, String module, String mark,String qu, String date){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -584,28 +580,90 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //start of module quries--------------------------------------------------
+    //add modules
+    public boolean addModule(Module m){
+        //db instance
+        SQLiteDatabase db = getWritableDatabase();
 
-//    public boolean addModule(Module m){
-//        //db instance
-//        SQLiteDatabase db = getWritableDatabase();
-//
-//        //preparation
-//        ContentValues values=new ContentValues();
-//        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
-//
-//
-//        //call insert db instence
-//        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
-//
-//        if(newRowID >= 1)
-//        {
-//            return  true;
-//        }
-//        else
-//        {
-//            return false;
-//        }
-//    }
+        //preparation
+        ContentValues values=new ContentValues();
+        values.put(UserMaster.Module.COLUMN_NAME_MODULENAME,m.getModuleName());
+
+
+        //call insert db instence
+        long newRowID =db.insert(UserMaster.Module.TABLE_NAME,null,values);
+
+        if(newRowID >= 1)
+        {
+            return  true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //read all data
+    public Cursor readAllModuleData(){
+        String query = "SELECT * FROM " + UserMaster.Module.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+
+    //update
+    public boolean updateModule(String row_id,String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(UserMaster.Module.COLUMN_NAME_MODULENAME, name);
+
+        long result =db.update(UserMaster.Module.TABLE_NAME,cv, "moduleID = ?", new String[]{row_id});
+        if(result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    //delete
+    public boolean deleteOneRowModule(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(UserMaster.Module.TABLE_NAME, "moduleID=?", new String[]{String.valueOf(row_id)});
+        if(result == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //validate module input data
+    public boolean validateModuleData(String name){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] projections = {
+                UserMaster.Module.COLUMN_NAME_MODULEID,
+                UserMaster.Module.COLUMN_NAME_MODULENAME
+        };
+        String selection = UserMaster.Module.COLUMN_NAME_MODULENAME + " =? " ;
+        String args[] = {name};
+
+        Cursor cursor = db.query(UserMaster.Module.TABLE_NAME, projections, selection, args,
+                null,
+                null,
+                null,
+                null);
+        if(cursor.getCount() != 0 )
+            return false;
+        else
+            return true;
+
+
+    }
     //----------End of Modules Queries-------------------------------------------------
 
 

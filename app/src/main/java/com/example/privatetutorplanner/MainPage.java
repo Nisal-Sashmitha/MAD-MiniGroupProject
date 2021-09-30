@@ -174,6 +174,17 @@ public class MainPage extends AppCompatActivity {
                     }
                 });
 
+        navToLessonsFab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainPage.this, Modules_List.class);
+                        // Intent intent = new Intent(this, assignment_class_ret.class);
+                        startActivity(intent);
+                    }
+                });
+
+
         // *******************End Of Navigation*****************//
 
 
